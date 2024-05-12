@@ -1,0 +1,281 @@
+/** 共通 **/
+/* フォント */
+@font-face {
+    font-family: "Permanent Marker";
+    src: url("../css/PermanentMarker-Regular.ttf");
+}
+
+@font-face {
+    font-family: "Noto Sans JP";
+    font-style: Normal;
+    font-weight: 400;
+    src: url("./NotoSansJP-Regular.otf") format('opentype');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Noto Sans JP";
+    font-style: Normal;
+    font-weight: 700;
+    src: url("./NotoSansJP-Bold.otf") format('opentype');
+    font-display: swap;
+}
+
+/* 画面全体 */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: "Noto Sans JP", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "メイリオ", "Meiryo", "ＭＳ　Ｐゴシック", "HelveticaNeue", "Helvetica", "Arial", Sans-Serif;
+}
+
+/* ヘッダー */
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 72px;
+    padding: 0 20px;
+    background-color: #00A08E;
+}
+
+.com_headerInner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.com_headerInner>img {
+    flex-shrink: 0;
+    width: 60px;
+    height: 48px;
+}
+
+.com_headerTtl {
+    padding-left: 16px;
+}
+
+.com_headerTtl>p {
+    font-family: 'Permanent Marker', cursive;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 42px;
+    color: #FFFFFF;
+    -webkit-text-stroke: 1px #585858;
+}
+
+/* メイン */
+main {
+    flex-grow: 1;
+    background-image: url("../image/soccer_ground.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+@media (min-width: 760px) {
+    main {
+        background-image: url("../image/soccer_ground_pc.jpg");
+    }
+}
+
+/* フッター */
+footer {
+    padding: 12px 20px;
+    background-color: #00A08E;
+}
+
+footer>p {
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 16px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+/* ローダー */
+.com_loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: #008673;
+    z-index: 9999;
+}
+
+.com_loader::after {
+    width: 80px;
+    height: 80px;
+    background-image: url("../image/soccerball_header.png");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    content: "";
+    animation: bounce 1.5s infinite linear;
+}
+
+@keyframes bounce {
+    0% {
+        transform: scale(1.0, 1.0) translateY(-120px);
+    }
+
+    12.5% {
+        transform: scale(1.0, 1.0) translateY(-90px);
+    }
+
+    25% {
+        transform: scale(1.0, 1.0) translateY(-40px);
+    }
+
+    37.5% {
+        transform: scale(1.0, 1.0) translateY(30px);
+    }
+
+    50% {
+        transform: scale(1.2, 0.8) translateY(120px);
+    }
+
+    62.5% {
+        transform: scale(1.0, 1.0) translateY(30px);
+    }
+
+    75% {
+        transform: scale(1.0, 1.0) translateY(-40px);
+    }
+
+    87.5% {
+        transform: scale(1.0, 1.0) translateY(-90px);
+    }
+
+    100% {
+        transform: scale(1.0, 1.0) translateY(-120px);
+    }
+}
+
+.com_loader_hidden {
+    animation: backgroundFade 1.0s ease-in forwards;
+}
+
+@keyframes backgroundFade {
+    to {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+.com_loader_hidden::after {
+    animation: enlarge 1.0s ease-in;
+}
+
+@keyframes enlarge {
+    from {
+        transform: scale(1);
+        opacity: 1.0;
+    }
+
+    to {
+        transform: scale(20) rotate(-180deg);
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+/** ホーム画面 **/
+.com_homeSec {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.com_homeSec>img {
+    position: absolute;
+}
+
+.com_homeSec>img:nth-child(1) {
+    width: 300px;
+    height: 300px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.com_homeSec>img:nth-child(2) {
+    width: 240px;
+    height: 240px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-52%, -75%);
+}
+
+@media (min-width: 760px) {
+    .com_homeSec>img:nth-child(1) {
+        width: 500px;
+        height: 500px;
+    }
+
+    .com_homeSec>img:nth-child(2) {
+        width: 320px;
+        height: 320px;
+    }
+}
+
+.sqh_nextBtnWrapper {
+    position: absolute;
+    left: 50%;
+    bottom: 12%;
+    transform: translate(-50%, 0);
+    display: flex;
+    justify-content: center;
+}
+
+/* ログイン画面へボタン */
+.sqh_nextBtn {
+    display: block;
+    width: 280px;
+    padding: 20px 16px;
+    border-radius: 8px;
+    background: linear-gradient(180deg, #EC686F, #DE4E55, #D3373F, #C9242C, #D3373F, #DE4E55, #EC686F);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    animation: blink 2s ease-in-out infinite;
+}
+
+.sqh_nextBtn>p {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 28px;
+    color: #FAC002;
+    text-align: center;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.4;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@media (min-width: 760px) {
+    .sqh_nextBtn {
+        cursor: pointer;
+    }
+}
+
+/** ログイン画面 **/
+/** クイズ画面 **/
+/** 結果画面 **/
+
+/** 画面全体 **/
+.com_secHidden {
+    display: none;
+}
