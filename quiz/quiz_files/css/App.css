@@ -23,17 +23,17 @@
 
 /* 画面全体 */
 body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
     font-family: "Noto Sans JP", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "メイリオ", "Meiryo", "ＭＳ　Ｐゴシック", "HelveticaNeue", "Helvetica", "Arial", Sans-Serif;
 }
 
 /* ヘッダー */
 header {
+    position: fixed;
+    top: 0;
+    left: 0;
     display: flex;
     justify-content: center;
-    align-items: center;
+    width: 100%;
     height: 72px;
     padding: 0 20px;
     background-color: #00A08E;
@@ -52,6 +52,7 @@ header {
 }
 
 .com_headerTtl {
+    flex-grow: 1;
     padding-left: 16px;
 }
 
@@ -66,7 +67,8 @@ header {
 
 /* メイン */
 main {
-    flex-grow: 1;
+    height: calc(100% - (72px + 40px));
+    margin: 72px 0 40px;
     background-image: url("../image/soccer_ground.jpg");
     background-size: cover;
     background-position: center;
@@ -81,7 +83,15 @@ main {
 
 /* フッター */
 footer {
-    padding: 12px 20px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 40px;
+    padding: 0 20px;
     background-color: #00A08E;
 }
 
@@ -184,6 +194,14 @@ footer>p {
     }
 }
 
+/* コンポーネント：ノーティフィケーション */
+.com_notification {
+    padding: 8px;
+    border: 1px solid #EA3D3D;
+    border-radius: 16px;
+    background-color: #FFE0E0;
+}
+
 /** ホーム画面 **/
 .com_homeSec {
     position: relative;
@@ -228,8 +246,6 @@ footer>p {
     left: 50%;
     bottom: 12%;
     transform: translate(-50%, 0);
-    display: flex;
-    justify-content: center;
 }
 
 /* ログイン画面へボタン */
@@ -272,6 +288,32 @@ footer>p {
 }
 
 /** ログイン画面 **/
+.com_loginSec {
+    padding: 48px 20px;
+}
+
+.sql_loginForm {
+    padding: 24px;
+    border-radius: 24px;
+    background-color: #FFF9E5;
+}
+
+.sql_loginForm>h3 {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 26px;
+    color: #2E2E2E;
+    text-align: center;
+}
+
+.sql_loginErrorArea {
+    padding-top: 24px;
+}
+
+.sql_loginErrorHidden {
+    display: none;
+}
+
 /** クイズ画面 **/
 /** 結果画面 **/
 
