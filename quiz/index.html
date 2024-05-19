@@ -17,7 +17,7 @@
 
 <body>
     <!-- ローダー -->
-    <!-- <div class="com_loader"></div> -->
+    <div class="com_loader"></div>
 
     <!-- ヘッダー -->
     <header>
@@ -31,7 +31,7 @@
     <!-- メイン -->
     <main>
         <!-- ホーム画面 -->
-        <section class="com_homeSec com_secHidden"><img src="./quiz_files/image/laurel_wreath.svg" alt="月桂冠"><img
+        <section class="com_homeSec"><img src="./quiz_files/image/laurel_wreath.svg" alt="月桂冠"><img
                 src="./quiz_files/image/usakame.svg" alt="うさりん・かめろん">
             <div class="sqh_nextBtnWrapper">
                 <a href="javascript:void(0);" tabindex="0" class="sqh_nextBtn" id="sqh_nextBtn">
@@ -41,9 +41,19 @@
         </section>
 
         <!-- ログイン画面 -->
-        <section class="com_loginSec">
+        <section class="com_loginSec com_secHidden">
             <form name="loginForm" class="sql_loginForm">
                 <h3>ログイン</h3>
+                <div class="sql_textFieldWrapper">
+                    <div class="com_textField"><input type="text" placeholder="&nbsp;" tabindex="0"
+                            autocomplete="username" id="userName">
+                        <p>ニックネームを入力してください</p>
+                    </div>
+                    <div class="sql_loginBtnWrapper"><a href="javascript:void(0);" tabindex="0"
+                            class="com_button01 com_button01_YEL" id="loginBtn">
+                            <p>クイズ開始！</p>
+                        </a></div>
+                </div>
             </form>
             <div class="sql_loginErrorArea sql_loginErrorHidden">
                 <div class="com_notification com_notification_red">

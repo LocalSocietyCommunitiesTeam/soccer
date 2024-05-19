@@ -15,7 +15,7 @@
 
 @font-face {
     font-family: "Noto Sans JP";
-    font-style: Normal;
+    font-style: Bold;
     font-weight: 700;
     src: url("./NotoSansJP-Bold.otf") format('opentype');
     font-display: swap;
@@ -202,6 +202,104 @@ footer>p {
     background-color: #FFE0E0;
 }
 
+/* コンポーネント：テキストフィールド */
+.com_textField {
+    position: relative;
+    overflow: hidden;
+}
+
+.com_textField>input {
+    display: block;
+    width: 100%;
+    padding: 18px 14px 12px 14px;
+    border: 2px solid #FFFFFF;
+    border-radius: 16px;
+    background-color: #FFFFFF;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #2E2E2E;
+}
+
+.com_textField_error>input {
+    border: 2px solid #D3381C;
+    background-color: #FEF4F4;
+}
+
+.com_textField_disabled>input {
+    border: 2px solid #D9D9D9;
+    background-color: #D9D9D9;
+    pointer-events: none;
+}
+
+.com_textField p {
+    position: absolute;
+    top: 50%;
+    left: 16px;
+    transform: translateY(-50%);
+    max-width: calc(100% - 16px * 2);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #585858;
+    pointer-events: none;
+    transition: all 0.2s ease-in-out;
+}
+
+.com_textField>input:focus+p {
+    transform: translateY(calc(-50% - 16px));
+    font-size: 12px;
+    line-height: 12px;
+    color: #2E2E2E;
+    transition: all 0.3s ease-in-out;
+}
+
+.com_textField>input:not(:placeholder-shown)+p {
+    transform: translateY(calc(-50% - 16px));
+    font-size: 12px;
+    line-height: 12px;
+    color: #2E2E2E;
+    transition: all 0.3s ease-in-out;
+}
+
+.com_textField_disabled>p {
+    color: #585858;
+}
+
+/* コンポーネント：ボタン */
+.com_button01 {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 16px;
+    border-radius: 24px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.com_button01_YEL {
+    background-color: #FABF00;
+}
+
+.com_button01_disabled {
+    background-color: #D9D9D9;
+    box-shadow: none;
+    pointer-events: none;
+}
+
+.com_button01>p {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.com_button01_YEL>p {
+    color: #2E2E2E;
+}
+
+.com_button01_disabled>p {
+    color: #585858;
+}
+
 /** ホーム画面 **/
 .com_homeSec {
     position: relative;
@@ -289,10 +387,12 @@ footer>p {
 
 /** ログイン画面 **/
 .com_loginSec {
-    padding: 48px 20px;
+    padding: 56px 20px 48px;
 }
 
 .sql_loginForm {
+    max-width: 480px;
+    margin: 0 auto;
     padding: 24px;
     border-radius: 24px;
     background-color: #FFF9E5;
@@ -304,6 +404,14 @@ footer>p {
     line-height: 26px;
     color: #2E2E2E;
     text-align: center;
+}
+
+.sql_textFieldWrapper {
+    padding-top: 48px;
+}
+
+.sql_loginBtnWrapper {
+    padding-top: 36px;
 }
 
 .sql_loginErrorArea {
