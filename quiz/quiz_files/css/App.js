@@ -58,6 +58,8 @@ window.addEventListener('DOMContentLoaded', function () {
     goToLoginBtn.addEventListener('click', function (e) {
         e.stopPropagation();
 
+        window.navigator.vibrate(200);
+
         const homeSec = document.getElementsByClassName('com_homeSec')[0];
         const loginSec = document.getElementsByClassName('com_loginSec')[0];
 
