@@ -66,7 +66,9 @@ header {
 
 /* メイン */
 main {
+    display: flex;
     flex-grow: 1;
+    flex-direction: column;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -85,6 +87,10 @@ main {
     main {
         background-image: url("../image/soccer_ground_pc.jpg");
     }
+}
+
+section {
+    flex-grow: 1;
 }
 
 /* フッター */
@@ -341,7 +347,6 @@ footer>p {
     justify-content: center;
     align-items: center;
     position: relative;
-    height: 100%;
 }
 
 .sqh_centerImgWrapper {
