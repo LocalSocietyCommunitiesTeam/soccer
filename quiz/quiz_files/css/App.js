@@ -1,23 +1,27 @@
 /** 共通 **/
 /* コンポーネント：ローダー */
+// ローダーを表示
 function showLoader() {
     const loader = document.getElementsByClassName('com_loader')[0];
 
     loader.classList.remove('com_loader_hidden');
 }
 
+// ローダーを非表示
 function hideLoader() {
     const loader = document.getElementsByClassName('com_loader')[0];
 
     loader.classList.add('com_loader_hidden');
 }
 
-let quizData;
-window.addEventListener('DOMContentLoaded', function () {
-    // クイズデータを取得
-    const QUIZ_DB_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbwekpsKlbmS5MX75qUJh-YSjES8wkDGW-FejUZR7QDE0SkXURWGt8fHZIvMEZGmYIU-2g/exec';
+// クイズDBのWEBアプリURL
+const QUIZ_DB_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbwekpsKlbmS5MX75qUJh-YSjES8wkDGW-FejUZR7QDE0SkXURWGt8fHZIvMEZGmYIU-2g/exec';
 
+
+window.addEventListener('DOMContentLoaded', function () {
+    // クイズデータの取得
     fetchfunction(QUIZ_DB_WEB_APP_URL);
+
 });
 
 async function fetchfunction(url) {
@@ -26,27 +30,32 @@ async function fetchfunction(url) {
     }).then((data) => {
         return JSON.parse(data);
     }).then((jsonData) => {
-        quizData = jsonData;
-
+        setQuizData(jsonData);
         hideLoader();
     }).catch((error) => {
         console.log('error: ' + error);
-        window.alert('通信エラーが発生しました。\n電波が良い場所でもう一度ページを開いてください。\n\n解決しない場合は管理者に問い合わせてください。\n管理者: meijiyasuda.kizuna@gmail.com');
+        // window.alert('通信エラーが発生しました。\n電波が良い場所でもう一度ページを開いてください。\n\n解決しない場合は管理者に問い合わせてください。\n管理者: meijiyasuda.kizuna@gmail.com');
     });
+}
+
+function setQuizData(quizData) {
+    const quizNum = document.getElementById('sqq_quizNum');
+    const question = document.getElementById('sqq_question');
+    const optionList = document.getElementById('sqq_optionList');
 }
 
 /** ホーム画面 **/
 window.addEventListener('DOMContentLoaded', function () {
-    const main = document.getElementsByTagName('main')[0];
-    const nextBtn = document.getElementById('sqh_nextBtn');
+    const homeSec = document.getElementsByClassName('com_homeSec')[0];
+    const goToLoginBtn = document.getElementById('sqh_goToLoginBtn');
 
-    main.addEventListener('click', function () {
-        const nextBtn = document.getElementById('sqh_nextBtn');
+    homeSec.addEventListener('click', function () {
+        const goToLoginBtn = document.getElementById('sqh_goToLoginBtn');
 
-        nextBtn.click();
+        goToLoginBtn.click();
     });
 
-    nextBtn.addEventListener('click', function (e) {
+    goToLoginBtn.addEventListener('click', function (e) {
         e.stopPropagation();
 
         const homeSec = document.getElementsByClassName('com_homeSec')[0];
@@ -59,24 +68,15 @@ window.addEventListener('DOMContentLoaded', function () {
 
 /** ログイン画面 **/
 window.addEventListener('DOMContentLoaded', function () {
-    const userName = document.getElementById('userName');
-    const loginBtn = document.getElementById('loginBtn');
-
-    function isFilled(element) {
-        if (element.value.trim().length > 0) {
-            return true;
-        } else {
-            return false;
-        }
-    }
+    const userName = document.getElementById('sql_userName');
+    const loginBtn = document.getElementById('sql_loginBtn');
 
     userName.addEventListener('keydown', function (e) {
         if (e.key === 'Enter') {
             const userName = document.getElementById('userName');
-            const loginBtn = document.getElementById('loginBtn');
 
             userName.blur();
-            loginBtn.click();
+            this.click();
         }
     });
 
@@ -99,6 +99,14 @@ window.addEventListener('DOMContentLoaded', function () {
         hideLoader();
     });
 });
+
+function isFilled(element) {
+    if (element.value.trim().length > 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
 
 /** クイズ画面 **/
 /** 結果画面 **/

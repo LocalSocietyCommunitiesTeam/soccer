@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Cache-Control" content="no-cache">
     <title>サッカークイズアプリ</title>
+    <link rel="shortcut icon" href="./quiz_files/image/favicon.ico" type="image/x-icon">
     <!-- 共通CSS -->
     <link rel="stylesheet" href="./quiz_files/css/reset.css?20240506">
     <link rel="stylesheet" href="./quiz_files/css/App.css?20240506">
@@ -18,7 +19,7 @@
 
 <body>
     <!-- ローダー -->
-    <div class="com_loader"></div>
+    <!-- <div class="com_loader"></div> -->
 
     <!-- ヘッダー -->
     <header>
@@ -32,10 +33,11 @@
     <!-- メイン -->
     <main>
         <!-- ホーム画面 -->
-        <section class="com_homeSec"><img src="./quiz_files/image/laurel_wreath.svg" alt="月桂冠"><img
-                src="./quiz_files/image/usakame.svg" alt="うさりん・かめろん">
+        <section class="com_homeSec com_secHidden">
+            <div class="sqh_centerImgWrapper"><img src="./quiz_files/image/laurel_wreath.svg" alt="月桂冠"><img
+                    src="./quiz_files/image/usakame.svg" alt="うさりん・かめろん"></div>
             <div class="sqh_nextBtnWrapper">
-                <a href="javascript:void(0);" tabindex="0" class="sqh_nextBtn" id="sqh_nextBtn">
+                <a href="javascript:void(0);" tabindex="0" class="sqh_nextBtn" id="sqh_goToLoginBtn">
                     <p>ログイン画面へ</p>
                 </a>
             </div>
@@ -47,11 +49,11 @@
                 <h3>ログイン</h3>
                 <div class="sql_textFieldWrapper">
                     <div class="com_textField"><input type="text" placeholder="&nbsp;" tabindex="0"
-                            autocomplete="username" id="userName">
+                            autocomplete="username" id="sql_userName">
                         <p>ニックネームを入力してください</p>
                     </div>
                     <div class="sql_loginBtnWrapper"><a href="javascript:void(0);" tabindex="0"
-                            class="com_button01 com_button01_YEL" id="loginBtn">
+                            class="com_button01 com_button01_YEL" id="sql_loginBtn">
                             <p>クイズ開始！</p>
                         </a></div>
                 </div>
@@ -70,19 +72,28 @@
                         </svg>
                         <p>エラー文言</p>
                     </div>
-
                 </div>
             </div>
         </section>
 
         <!-- クイズ画面 -->
-        <section class="com_quizSec com_secHidden">
-            クイズ画面
+        <section class="com_quizSec">
+            <ul class="com_progressbar">
+                <li class="com_progressbar_active"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
         </section>
 
         <!-- 結果画面 -->
         <section class="com_resultSec com_secHidden">
-            結果画面
+            <div>結果画面</div>
         </section>
     </main>
 
