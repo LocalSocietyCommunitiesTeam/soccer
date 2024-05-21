@@ -25,7 +25,7 @@
 body {
     display: flex;
     flex-direction: column;
-    height: 100lvh;
+    height: 100svh;
     font-family: "Noto Sans JP", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "メイリオ", "Meiryo", "ＭＳ　Ｐゴシック", "HelveticaNeue", "Helvetica", "Arial", Sans-Serif;
 }
 
