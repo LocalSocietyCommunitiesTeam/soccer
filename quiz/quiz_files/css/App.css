@@ -377,8 +377,8 @@ footer>p {
 .sqh_nextBtnWrapper {
     position: absolute;
     left: 50%;
-    bottom: 12%;
-    transform: translate(-50%, 0);
+    bottom: 4%;
+    transform: translate(-50%, -50%);
 }
 
 /* ログイン画面へボタン */
