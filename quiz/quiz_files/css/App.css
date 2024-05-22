@@ -347,6 +347,7 @@ footer>p {
     justify-content: center;
     align-items: center;
     position: relative;
+    width: 100%;
 }
 
 .sqh_centerImgWrapper {
