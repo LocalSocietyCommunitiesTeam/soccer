@@ -8,6 +8,7 @@
     <link rel="shortcut icon" href="./quiz_files/image/favicon.ico" type="image/x-icon">
     <!-- 共通CSS -->
     <link rel="stylesheet" href="./quiz_files/css/reset.css">
+    <link rel="stylesheet" href="./quiz_files/css/component.css">
     <link rel="stylesheet" href="./quiz_files/css/App.css">
     <!-- <link rel="stylesheet" href="./quiz_files/css/common.css?20240506"> -->
     <!-- 画面個別CSS -->
@@ -19,7 +20,7 @@
 
 <body>
     <!-- ローダー -->
-    <div class="com_loader"></div>
+    <div class="c_loader"></div>
 
     <!-- ヘッダー -->
     <header>
@@ -48,19 +49,19 @@
             <form name="loginForm" class="sql_loginForm">
                 <h3>ログイン</h3>
                 <div class="sql_textFieldWrapper">
-                    <div class="com_textField"><input type="text" placeholder="&nbsp;" tabindex="0"
+                    <div class="c_textField"><input type="text" placeholder="&nbsp;" tabindex="0"
                             autocomplete="username" id="sql_userName">
                         <p>ニックネームを入力してください</p>
                     </div>
                     <div class="sql_loginBtnWrapper"><a href="javascript:void(0);" tabindex="0"
-                            class="com_button01 com_button01_YEL" id="sql_loginBtn">
+                            class="c_button01 c_button01_YEL" id="sql_loginBtn">
                             <p>クイズ開始！</p>
                         </a></div>
                 </div>
             </form>
             <div class="sql_loginErrorArea sql_loginErrorHidden">
-                <div class="com_notification com_notification_red">
-                    <div class="com_notification_ttl"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                <div class="c_notification c_notification_red">
+                    <div class="c_notification_ttl"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <rect x="4" y="4" width="16" height="16" rx="8" fill="#EF0B0B"></rect>
                             <path
@@ -78,8 +79,8 @@
 
         <!-- クイズ画面 -->
         <section class="com_quizSec com_secHidden">
-            <ul class="com_progressbar">
-                <li class="com_progressbar_active"></li>
+            <ul class="c_progressbar">
+                <li class="c_progressbar_active"></li>
                 <li></li>
                 <li></li>
                 <li></li>
@@ -103,7 +104,10 @@
     </footer>
 
     <!-- 共通CSS -->
+    <script src="./quiz_files/css/event.js"></script>
+    <script src="./quiz_files/css/common.js"></script>
     <script src="./quiz_files/css/App.js"></script>
+    <script src="./quiz_files/css/home.js"></script>
     <!-- <script src="./quiz_files/css/common.js?20240506"></script> -->
     <!-- 画面個別JavaScript -->
     <!-- <script src="./quiz_files/css/home.js?20240506"></script>

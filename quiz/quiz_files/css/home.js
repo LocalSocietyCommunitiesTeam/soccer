@@ -1,102 +1,55 @@
-/* ホーム画面JavaScript */
-// 画面読み込み時にローディング非表示
-window.addEventListener('load', hideLoader);
+/** ホーム画面JavaScript **/
+window.addEventListener('DOMContentLoaded', function () {
+    // クイズデータを取得
+    getQuizData(QUIZ_DB_WEB_APP_URL);
 
-// 点滅
-const loginBtn = document.getElementById('sqh_loginBtn');
-window.addEventListener('DOMContentLoaded', blink(loginBtn));
-function blink(element) {
-    setInterval(function () {
-        if (element.classList.contains('sqh_blink')) {
-            element.classList.remove('sqh_blink');
-        } else {
-            element.classList.add('sqh_blink');
-        }
-    }, 1100);
-}
+    // クイズデータをセット
+    setQuizData(quizData);
 
-/* 遊び心 */
-window.addEventListener('mousemove', enlargeBall);
-window.addEventListener('touchmove', enlargeBall);
+    // 要素を取得
+    const homeSec = document.getElementsByClassName('com_homeSec')[0]; // ホームセクション
+    const goToLoginBtn = document.getElementById('sqh_goToLoginBtn'); // ログイン画面へボタン
 
-function enlargeBall() {
-    const ball = document.getElementById('sqh_moveIcon');
-    let ballTop = ball.style.top.replace('px', '');
-    let ballLeft = ball.style.left.replace('px', '');
-    let windowWidth = document.documentElement.offsetWidth;
-    let windowHeight = window.innerHeight * (1 - 0.01);
-    if (ballTop > windowHeight * 0.3 - 48 - 12 && ballTop < windowHeight * 0.6 - 48 - 12 && ballLeft > windowWidth * 0.3 - 60 - 20 && ballLeft < windowWidth * 0.7 - 60 - 20) {
-        if (!ball.classList.contains('sqh_ball_big')) {
-            ball.classList.add('sqh_ball_big');
-        }
-    } else {
-        if (ball.classList.contains('sqh_ball_big')) {
-            ball.classList.remove('sqh_ball_big');
-        }
-    }
+    homeSec.addEventListener('click', function () {
+        window.alert('ホームセクションをクリック');
+        const goToLoginBtn = document.getElementById('sqh_goToLoginBtn');
 
-    let currentSrc = ball.getAttribute('src');
-    let newSrc = currentSrc;
-    let dataShowFlg = false;
-    if (ballTop > windowHeight * 0.9 - 48 - 12 && ballTop < windowHeight && ballLeft > windowWidth * 0.9 - 20 - 60 && ballLeft < windowWidth) {
-        if (!currentSrc.match(/reverse/)) {
-            newSrc = currentSrc.replace('header', 'header_reverse');
-            if (!dataShowFlg) {
-                dataShowFlg = true;
-            }
-        }
-    } else {
-        if (currentSrc.match(/reverse/)) {
-            newSrc = currentSrc.replace('header_reverse', 'header');
-        }
-    }
-    ball.setAttribute('src', newSrc);
-    if (dataShowFlg) {
-        showData();
-    }
-}
+        goToLoginBtn.click();
+    });
 
-/* ブラウザバック時の処理 */
-window.addEventListener('pageshow', function (e) {
-    if (e.persisted) {
-        // ページ再読み込み
-        location.reload();
-    }
+    goToLoginBtn.addEventListener('click', function (e) {
+        window.alert('ログイン画面へボタンをクリック');
+        e.stopPropagation();
+
+        window.navigator.vibrate(200);
+
+        const homeSec = document.getElementsByClassName('com_homeSec')[0];
+        const loginSec = document.getElementsByClassName('com_loginSec')[0];
+
+        homeSec.classList.add('com_secHidden');
+        loginSec.classList.remove('com_secHidden');
+    });
 });
 
-function showData() {
-    console.log('データ開示');
+// クイズデータを取得する関数
+function getQuizData(url) {
+    fetch(url).then((response) => {
+        return response.json();
+    }).then((data) => {
+        return JSON.parse(data);
+    }).then((jsonData) => {
+        quizData = jsonData;
+        hideLoader();
+    }).catch((error) => {
+        console.log('error: ' + error);
+        // window.alert('通信エラーが発生しました。\n電波が良い場所でもう一度ページを開いてください。\n\n解決しない場合は管理者に問い合わせてください。\n管理者: meijiyasuda.kizuna@gmail.com');
+    });
+}
 
-    // ローダーの表示
-    showLoader();
-    // ログGASのデプロイURLを設定
-    const deployUrl = 'https://script.google.com/macros/s/AKfycbwpjqJWo-9OJoYzDFsGorGRFrXNc-yta0do7L_JTGCWK0Ec1mVvdkymRaCRBZ8Ical7/exec';
-    // 指定されたURLにリクエストを送信
-    fetch(deployUrl)
-        .then(response => {
-            // レスポンスデータをJSON形式に変換
-            return response.json();
-        })
-        .then(data => {
-            // クイズデータを取得
-            const textData = data.content;
-            // クイズデータを要素ごとに分割
-            const splitData = textData.split('[sep]');
-
-            // ホームエリアの要素を取得
-            const homeArea = document.getElementsByClassName('sqh_homeArea')[0];
-            // ホームエリアを非表示に変更
-            homeArea.classList.add('sqh_hide');
-            // シークレットエリアの要素を取得
-            const secretArea = document.getElementsByClassName('sqh_secretArea')[0];
-            // シークレットエリアを非表示に変更
-            secretArea.classList.add('sqh_show');
-            let now = new Date()
-            console.log(now);
-            // ローダーの非表示
-            hideLoader()
-        })
-        .catch(error => {
-            console.log(error);
-        });
+// クイズデータを画面にセットする関数
+function setQuizData(data) {
+    window.alert('quizData:\n' + data);
+    const quizNum = document.getElementById('sqq_quizNum');
+    const question = document.getElementById('sqq_question');
+    const optionList = document.getElementById('sqq_optionList');
 }
