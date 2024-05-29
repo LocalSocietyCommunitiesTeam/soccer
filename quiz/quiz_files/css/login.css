@@ -1,1 +1,36 @@
-/* ログイン画面CSS */
+/** ログイン画面CSS **/
+.sql_loginSec {
+    padding: 56px 20px 48px;
+}
+
+.sql_secHidden {
+    display: none;
+}
+
+.sql_loginForm {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 24px;
+    border-radius: 24px;
+    background-color: #FFF9E5;
+}
+
+.sql_loginForm>h3 {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 26px;
+    color: #2E2E2E;
+    text-align: center;
+}
+
+.sql_textFieldWrapper {
+    padding-top: 48px;
+}
+
+.sql_loginBtnWrapper {
+    padding-top: 36px;
+}
+
+.sql_loginErrorArea {
+    padding-top: 24px;
+}

@@ -3,11 +3,8 @@ window.addEventListener('DOMContentLoaded', function () {
     // クイズデータを取得
     getQuizData(QUIZ_DB_WEB_APP_URL);
 
-    // クイズデータをセット
-    setQuizData(quizData);
-
     // 要素を取得
-    const homeSec = document.getElementsByClassName('com_homeSec')[0]; // ホームセクション
+    const homeSec = document.getElementsByClassName('sqh_homeSec')[0]; // ホームセクション
     const goToLoginBtn = document.getElementById('sqh_goToLoginBtn'); // ログイン画面へボタン
 
     homeSec.addEventListener('click', function () {
@@ -23,11 +20,11 @@ window.addEventListener('DOMContentLoaded', function () {
 
         window.navigator.vibrate(200);
 
-        const homeSec = document.getElementsByClassName('com_homeSec')[0];
-        const loginSec = document.getElementsByClassName('com_loginSec')[0];
+        const homeSec = document.getElementsByClassName('sqh_homeSec')[0];
+        const loginSec = document.getElementsByClassName('sql_loginSec')[0];
 
-        homeSec.classList.add('com_secHidden');
-        loginSec.classList.remove('com_secHidden');
+        homeSec.classList.add('com_hiddenFlg');
+        loginSec.classList.remove('com_hiddenFlg');
     });
 });
 
@@ -39,6 +36,8 @@ function getQuizData(url) {
         return JSON.parse(data);
     }).then((jsonData) => {
         quizData = jsonData;
+        // クイズデータをセット
+        setQuizData(quizData);
         hideLoader();
     }).catch((error) => {
         console.log('error: ' + error);
@@ -48,7 +47,13 @@ function getQuizData(url) {
 
 // クイズデータを画面にセットする関数
 function setQuizData(data) {
-    window.alert('quizData:\n' + data);
+    for (let i = 0; i < data.length; i++) {
+        console.log('No.' + (i + 1)
+            + '\n\tquizId: ' + data[i].quizId
+            + '\n\tquestion: ' + data[i].question
+            + '\n\toption: ' + data[i].option
+            + '\n\tanswer: ' + data[i].answer + '\n');
+    }
     const quizNum = document.getElementById('sqq_quizNum');
     const question = document.getElementById('sqq_question');
     const optionList = document.getElementById('sqq_optionList');

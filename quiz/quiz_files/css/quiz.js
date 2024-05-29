@@ -1,1 +1,1 @@
-/* クイズ画面JavaScript */
+/** クイズ画面JavaScript **/

@@ -1,4 +1,14 @@
 /** 共通JavaScript **/
+// headタグの最後に非表示用クラスを追加
+window.addEventListener('DOMContentLoaded', function () {
+    const head = document.getElementsByTagName('head')[0];
+    const comment = document.createComment('画面共通CSS');
+    const style = document.createElement('style');
+    style.innerHTML = '.com_hiddenFlg { display: none; }';
+    head.appendChild(comment);
+    head.appendChild(style);
+});
+
 // クイズデータ
 var quizData;
 // ユーザーデータ

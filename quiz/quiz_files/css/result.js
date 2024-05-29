@@ -1,1 +1,1 @@
-/* 結果画面JavaScript */
+/** 結果画面JavaScript **/

@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="ja">
 
 <head>
@@ -6,16 +7,15 @@
     <meta http-equiv="Cache-Control" content="no-cache">
     <title>サッカークイズアプリ</title>
     <link rel="shortcut icon" href="./quiz_files/image/favicon.ico" type="image/x-icon">
-    <!-- 共通CSS -->
+    <!-- 画面共通CSS -->
     <link rel="stylesheet" href="./quiz_files/css/reset.css">
     <link rel="stylesheet" href="./quiz_files/css/component.css">
-    <link rel="stylesheet" href="./quiz_files/css/App.css">
-    <!-- <link rel="stylesheet" href="./quiz_files/css/common.css?20240506"> -->
+    <link rel="stylesheet" href="./quiz_files/css/common.css">
     <!-- 画面個別CSS -->
-    <!-- <link rel="stylesheet" href="./quiz_files/css/home.css?20240506">
-    <link rel="stylesheet" href="./quiz_files/css/login.css?20240506">
-    <link rel="stylesheet" href="./quiz_files/css/quiz.css?20240506">
-    <link rel="stylesheet" href="./quiz_files/css/result.css?20240506"> -->
+    <link rel="stylesheet" href="./quiz_files/css/home.css">
+    <link rel="stylesheet" href="./quiz_files/css/login.css">
+    <link rel="stylesheet" href="./quiz_files/css/quiz.css">
+    <link rel="stylesheet" href="./quiz_files/css/result.css">
 </head>
 
 <body>
@@ -34,7 +34,7 @@
     <!-- メイン -->
     <main>
         <!-- ホーム画面 -->
-        <section class="com_homeSec">
+        <section class="sqh_homeSec">
             <div class="sqh_centerImgWrapper"><img src="./quiz_files/image/laurel_wreath.svg" alt="月桂冠"><img
                     src="./quiz_files/image/usakame.svg" alt="うさりん・かめろん"></div>
             <div class="sqh_nextBtnWrapper">
@@ -45,7 +45,7 @@
         </section>
 
         <!-- ログイン画面 -->
-        <section class="com_loginSec com_secHidden">
+        <section class="sql_loginSec com_hiddenFlg">
             <form name="loginForm" class="sql_loginForm">
                 <h3>ログイン</h3>
                 <div class="sql_textFieldWrapper">
@@ -59,7 +59,7 @@
                         </a></div>
                 </div>
             </form>
-            <div class="sql_loginErrorArea sql_loginErrorHidden">
+            <div class="sql_loginErrorArea com_hiddenFlg">
                 <div class="c_notification c_notification_red">
                     <div class="c_notification_ttl"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
@@ -78,7 +78,7 @@
         </section>
 
         <!-- クイズ画面 -->
-        <section class="com_quizSec com_secHidden">
+        <section class="sqq_quizSec com_hiddenFlg">
             <ul class="c_progressbar">
                 <li class="c_progressbar_active"></li>
                 <li></li>
@@ -90,10 +90,12 @@
                 <li></li>
                 <li></li>
             </ul>
+
+            <div>クイズ画面</div>
         </section>
 
         <!-- 結果画面 -->
-        <section class="com_resultSec com_secHidden">
+        <section class="sqr_resultSec com_hiddenFlg">
             <div>結果画面</div>
         </section>
     </main>
@@ -103,17 +105,15 @@
         <p>&copy; 2024 Kizuna of IT Digital Strategy Department v2.0</p>
     </footer>
 
-    <!-- 共通CSS -->
+    <!-- 画面共通CSS -->
     <script src="./quiz_files/css/event.js"></script>
     <script src="./quiz_files/css/common.js"></script>
-    <script src="./quiz_files/css/App.js"></script>
-    <script src="./quiz_files/css/home.js"></script>
-    <!-- <script src="./quiz_files/css/common.js?20240506"></script> -->
     <!-- 画面個別JavaScript -->
-    <!-- <script src="./quiz_files/css/home.js?20240506"></script>
-    <script src="./quiz_files/css/login.js?20240506"></script>
-    <script src="./quiz_files/css/quiz.js?20240506"></script>
-    <script src="./quiz_files/css/result.js?20240506"></script> -->
+    <script src="./quiz_files/css/home.js"></script>
+    <script src="./quiz_files/css/login.js"></script>
+    <script src="./quiz_files/css/quiz.js"></script>
+    <script src="./quiz_files/css/result.js"></script>
+
 </body>
 
 </html>
