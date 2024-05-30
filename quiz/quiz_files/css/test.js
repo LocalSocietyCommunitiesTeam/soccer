@@ -181,7 +181,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
     postUserLogBtn.addEventListener('click', function () {
         console.log('postUserLogBtn');
-        fetchUserLog(userData.userId, userData.loginDate, userData.answerDate, userData.choice, userData.point);
+        logAnswer(userData.userId, userData.loginDate, userData.answerDate, userData.choice, userData.point);
     });
 });
 
