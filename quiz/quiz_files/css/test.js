@@ -134,7 +134,7 @@ async function logAnswer(userId, loginDate, answerDate, choice, point) {
         });
 
         const data = response.json();
-        
+
         return data;
     } catch (e) {
         console.error(e.name, e.message);
@@ -200,3 +200,33 @@ function formatDate(date) {
 
     return output;
 }
+
+function generateUUID() {
+    const hexDigits = '0123456789abcdef';
+
+    let uuid = '';
+    for (let i = 0; i < 36; i++) {
+        if (i === 8 || i === 13 || i === 18 || i === 23) {
+            uuid += '-';
+        }
+        uuid += hexDigits[Math.floor(Math.random() * 16)];
+    }
+
+    return uuid;
+}
+
+function saveUuidToLocalStorage() {
+    // ローカルストレージから UUID を取得する
+    const storedUuid = localStorage.getItem('uuid');
+
+    // UUID が保存されていない場合、新しい UUID を生成して保存する
+    if (!storedUuid) {
+        const uuid = crypto.randomUUID();
+        localStorage.setItem('uuid', uuid);
+        console.log('UUID を保存しました:', uuid);
+    } else {
+        console.log('UUID が保存されています:', storedUuid);
+    }
+}
+
+saveUuidToLocalStorage();
