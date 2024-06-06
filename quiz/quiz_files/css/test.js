@@ -3,31 +3,25 @@ const WEBAPPURL = 'https://script.google.com/macros/s/AKfycbx0ghxxDOCkNzh1E1aeFk
 
 var quizData;
 var logData;
-// var userData = {
-//     userId: "1234567890",
-//     loginDate: "2024/05/30 15:46:30",
-//     answerDate: "2024/05/30 15:48:27",
-//     choice: [
-//         4,
-//         3,
-//         1,
-//         2,
-//         3,
-//         1,
-//         4,
-//         2,
-//         1,
-//         2
-//     ],
-//     point: 8
-// };
-
-// var userData = new Object();
-// userData.userId = '1234567890';
-// userData.loginDate = '2024/05/30 15:46:30';
-// userData.answerDate = '2024/05/30 15:48:27';
-// userData.choice = [4, 3, 1, 2, 3, 1, 4, 2, 1, 2];
-// userData.point = 8;
+var userData = {
+    "userId": "1234567890",
+    "loginDate": "2024/05/30 15:46:30",
+    "answerDate": "2024/05/30 15:48:27",
+    "choice": [
+        4,
+        3,
+        1,
+        2,
+        3,
+        1,
+        4,
+        2,
+        1,
+        2
+    ],
+    "point": 8
+};
+var resultText = document.getElementById('resultText');
 
 function addParametersToURL(url, params) {
     // URLオブジェクトを作成
@@ -48,113 +42,127 @@ function addParametersToURL(url, params) {
 
 async function fetchAllQuizzes() {
     const newURL = addParametersToURL(WEBAPPURL, { action: 'allQuizzes' });
-
+    let message = '';
     try {
         const response = await fetch(newURL, {
             timeout: 10000
         });
         const quizzes = await response.json();
-        quizData = quizzes;
+        quizData = quizzes.result;
         console.log(quizData);
+        message = quizData;
     } catch (e) {
         console.error(e.name, e.message);
+        message = e;
     }
+
+    resultText.innerText = message;
 }
 
 async function fetchAllRandomQuizzes() {
     const newURL = addParametersToURL(WEBAPPURL, { action: 'allRandomQuizzes' });
-
+    let message = '';
     try {
         const response = await fetch(newURL, {
             timeout: 10000
         });
         const quizzes = await response.json();
-        quizData = quizzes;
+        quizData = quizzes.result;
         console.log(quizData);
+        message = quizData;
     } catch (e) {
         console.error(e.name, e.message);
+        message = e;
     }
+
+    resultText.innerText = message;
 }
 
 async function fetchRandomQuizzes(num) {
     const newURL = addParametersToURL(WEBAPPURL, { action: 'randomQuizzes', limitNumOfQuiz: num });
-
+    let message = '';
     try {
         const response = await fetch(newURL, {
             timeout: 10000
         });
         const quizzes = await response.json();
-        quizData = quizzes;
+        quizData = quizzes.result;
         console.log(quizData);
+        message = quizData;
     } catch (e) {
         console.error(e.name, e.message);
+        message = e;
     }
+
+    resultText.innerText = message;
 }
 
 async function fetchAllLogs() {
     const newURL = addParametersToURL(WEBAPPURL, { action: 'allLogs' });
-
+    let message = '';
     try {
         const response = await fetch(newURL, {
             timeout: 10000
         });
         const logs = await response.json();
-        logData = logs;
+        logData = logs.result;
         console.log(logData);
+        message = logData;
     } catch (e) {
         console.error(e.name, e.message);
+        message = e;
     }
+
+    resultText.innerText = message;
 }
 
 async function fetchUserLog(userId) {
     const newURL = addParametersToURL(WEBAPPURL, { action: 'userLog', userId: userId });
-
+    let message = '';
     try {
         const response = await fetch(newURL, {
             timeout: 10000
         });
         const log = await response.json();
-        logData = log;
+        logData = log.result;
         console.log(logData);
+        message = logData;
     } catch (e) {
         console.error(e.name, e.message);
+        message = e;
     }
+
+    resultText.innerText = message;
 }
 
 async function logAnswer(userData) {
     const newURL = addParametersToURL(WEBAPPURL, { action: 'setUserLog' });
-
+    let message = '';
     try {
         const response = await fetch(newURL, {
-            method: 'POST',
-            mode: 'no-cors',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(userData),
-            timeout: 10000
+            "method": "POST",
+            "mode": "no-cors",
+            "Content-Type": "application/x-www-form-urlencoded",
+            "body": JSON.stringify({
+                userId,
+                loginDate,
+                answerDate,
+                choice,
+                point
+            }),
+            "timeout": 10000
         });
 
-        const data = await response.json();
+        const data = response.json();
+        message = data.resultMessage;
 
-        console.log('status: ' + data.status);
-
-        return data;
+        return data.resultMessage;
     } catch (e) {
-        // console.error(e.name, e.message);
-        console.log(e);
-
-        if (e instanceof TypeError) {
-            // TypeError 例外を処理するための文
-            console.log('TypeError');
-        } else if (e instanceof RangeError) {
-            // RangeError 例外を処理するための文
-            console.log('RangeError');
-        } else if (e instanceof EvalError) {
-            // EvalError 例外を処理するための文
-            console.log('EvalError');
-        }
+        console.error(e.name, e.message);
+        message = e;
     }
+
+    resultText.innerText = message;
 }
 
 
@@ -166,8 +174,6 @@ window.addEventListener('DOMContentLoaded', function () {
     const allLogBtn = document.getElementById('allLogBtn');
     const userLogBtn = document.getElementById('userLogBtn');
     const postUserLogBtn = document.getElementById('postUserLogBtn');
-
-    const date = new Date();
 
     quizBtn.addEventListener('click', function () {
         console.log('quizBtn');
