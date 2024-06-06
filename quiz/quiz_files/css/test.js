@@ -74,6 +74,8 @@ async function fetchAllRandomQuizzes() {
         console.error(e.name, e.message);
         message = e;
     }
+
+    resultText.innerText = message;
 }
 
 async function fetchRandomQuizzes(num) {
@@ -91,6 +93,8 @@ async function fetchRandomQuizzes(num) {
         console.error(e.name, e.message);
         message = e;
     }
+
+    resultText.innerText = message;
 }
 
 async function fetchAllLogs() {
@@ -108,6 +112,8 @@ async function fetchAllLogs() {
         console.error(e.name, e.message);
         message = e;
     }
+
+    resultText.innerText = message;
 }
 
 async function fetchUserLog(userId) {
@@ -125,6 +131,8 @@ async function fetchUserLog(userId) {
         console.error(e.name, e.message);
         message = e;
     }
+
+    resultText.innerText = message;
 }
 
 async function logAnswer(userId, loginDate, answerDate, choice, point) {
@@ -154,6 +162,8 @@ async function logAnswer(userId, loginDate, answerDate, choice, point) {
         console.error(e.name, e.message);
         message = e;
     }
+
+    resultText.innerText = message;
 }
 
 
