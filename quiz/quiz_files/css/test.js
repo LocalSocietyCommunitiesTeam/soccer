@@ -140,18 +140,17 @@ async function logAnswer(userId, loginDate, answerDate, choice, point) {
     let message = '';
     try {
         const response = await fetch(newURL, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
+            "method": "POST",
+            "mode": "no-cors",
+            "Content-Type": "application/x-www-form-urlencoded",
+            "body": JSON.stringify({
                 userId,
                 loginDate,
                 answerDate,
                 choice,
                 point
             }),
-            timeout: 10000
+            "timeout": 10000
         });
 
         const data = response.json();
