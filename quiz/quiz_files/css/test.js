@@ -3,24 +3,31 @@ const WEBAPPURL = 'https://script.google.com/macros/s/AKfycbx0ghxxDOCkNzh1E1aeFk
 
 var quizData;
 var logData;
-var userData = {
-    "userId": "1234567890",
-    "loginDate": "2024/05/30 15:46:30",
-    "answerDate": "2024/05/30 15:48:27",
-    "choice": [
-        4,
-        3,
-        1,
-        2,
-        3,
-        1,
-        4,
-        2,
-        1,
-        2
-    ],
-    "point": 8
-};
+// var userData = {
+//     userId: "1234567890",
+//     loginDate: "2024/05/30 15:46:30",
+//     answerDate: "2024/05/30 15:48:27",
+//     choice: [
+//         4,
+//         3,
+//         1,
+//         2,
+//         3,
+//         1,
+//         4,
+//         2,
+//         1,
+//         2
+//     ],
+//     point: 8
+// };
+
+// var userData = new Object();
+// userData.userId = '1234567890';
+// userData.loginDate = '2024/05/30 15:46:30';
+// userData.answerDate = '2024/05/30 15:48:27';
+// userData.choice = [4, 3, 1, 2, 3, 1, 4, 2, 1, 2];
+// userData.point = 8;
 
 function addParametersToURL(url, params) {
     // URLオブジェクトを作成
@@ -114,30 +121,39 @@ async function fetchUserLog(userId) {
     }
 }
 
-async function logAnswer(userId, loginDate, answerDate, choice, point) {
+async function logAnswer(userData) {
     const newURL = addParametersToURL(WEBAPPURL, { action: 'setUserLog' });
 
     try {
         const response = await fetch(newURL, {
             method: 'POST',
+            mode: 'no-cors',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({
-                userId,
-                loginDate,
-                answerDate,
-                choice,
-                point
-            }),
+            body: JSON.stringify(userData),
             timeout: 10000
         });
 
-        const data = response.json();
+        const data = await response.json();
+
+        console.log('status: ' + data.status);
 
         return data;
     } catch (e) {
-        console.error(e.name, e.message);
+        // console.error(e.name, e.message);
+        console.log(e);
+
+        if (e instanceof TypeError) {
+            // TypeError 例外を処理するための文
+            console.log('TypeError');
+        } else if (e instanceof RangeError) {
+            // RangeError 例外を処理するための文
+            console.log('RangeError');
+        } else if (e instanceof EvalError) {
+            // EvalError 例外を処理するための文
+            console.log('EvalError');
+        }
     }
 }
 
@@ -181,7 +197,15 @@ window.addEventListener('DOMContentLoaded', function () {
 
     postUserLogBtn.addEventListener('click', function () {
         console.log('postUserLogBtn');
-        logAnswer(userData.userId, userData.loginDate, userData.answerDate, userData.choice, userData.point);
+        var userData = new Object();
+        userData.userId = "1234567890";
+        userData.loginDate = "2024/05/30 15:46:30";
+        userData.answerDate = "2024/05/30 15:48:27";
+        userData.choice = [4, 3, 1, 2, 3, 1, 4, 2, 1, 2];
+        userData.point = 8;
+        console.log('userData(Object): ' + userData);
+        console.log('userData(JSON): ' + JSON.stringify(userData));
+        logAnswer(JSON.stringify(userData));
     });
 });
 
@@ -223,9 +247,8 @@ function saveUuidToLocalStorage() {
     if (!storedUuid) {
         const uuid = crypto.randomUUID();
         localStorage.setItem('uuid', uuid);
-        console.log('UUID を保存しました:', uuid);
     } else {
-        console.log('UUID が保存されています:', storedUuid);
+
     }
 }
 
