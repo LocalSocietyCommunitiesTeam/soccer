@@ -101,7 +101,6 @@
 /* テキストフィールド */
 .c_textField {
     position: relative;
-    overflow: hidden;
 }
 
 .c_textField>input {
