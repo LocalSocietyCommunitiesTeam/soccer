@@ -4,23 +4,14 @@ const WEBAPPURL = 'https://script.google.com/macros/s/AKfycbx0ghxxDOCkNzh1E1aeFk
 var quizData;
 var logData;
 var userData = {
-    "userId": "1234567890",
-    "loginDate": "2024/05/30 15:46:30",
-    "answerDate": "2024/05/30 15:48:27",
-    "choice": [
-        4,
-        3,
-        1,
-        2,
-        3,
-        1,
-        4,
-        2,
-        1,
-        2
-    ],
-    "point": 8
+    uuid: generateUUID(),
+    userName: "1234567890",
+    loginDate: formatDate(new Date()),
+    answerDate: formatDate(new Date()),
+    choice: [getRandomNum(1, 4), getRandomNum(1, 4), getRandomNum(1, 4), getRandomNum(1, 4), getRandomNum(1, 4), getRandomNum(1, 4), getRandomNum(1, 4), getRandomNum(1, 4), getRandomNum(1, 4), getRandomNum(1, 4)],
+    point: getRandomNum(0, 10)
 };
+
 var resultText = document.getElementById('resultText');
 
 function addParametersToURL(url, params) {
@@ -116,8 +107,8 @@ async function fetchAllLogs() {
     resultText.innerText = message;
 }
 
-async function fetchUserLog(userId) {
-    const newURL = addParametersToURL(WEBAPPURL, { action: 'userLog', userId: userId });
+async function fetchUserLog(userName) {
+    const newURL = addParametersToURL(WEBAPPURL, { action: 'userLog', userName: userName });
     let message = '';
     try {
         const response = await fetch(newURL, {
@@ -135,34 +126,24 @@ async function fetchUserLog(userId) {
     resultText.innerText = message;
 }
 
-async function logAnswer(userData) {
+async function logAnswer(data) {
     const newURL = addParametersToURL(WEBAPPURL, { action: 'setUserLog' });
-    let message = '';
+
     try {
         const response = await fetch(newURL, {
             "method": "POST",
-            "mode": "no-cors",
-            "Content-Type": "application/x-www-form-urlencoded",
-            "body": JSON.stringify({
-                userId,
-                loginDate,
-                answerDate,
-                choice,
-                point
-            }),
+            "headers": {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            "body": JSON.stringify(data),
             "timeout": 10000
         });
 
-        const data = response.json();
-        message = data.resultMessage;
-
-        return data.resultMessage;
+        const result = await response.json();
+        console.log('result.resultMessage: ' + result.resultMessage);
     } catch (e) {
-        console.error(e.name, e.message);
-        message = e;
+        console.error(e);
     }
-
-    resultText.innerText = message;
 }
 
 
@@ -198,20 +179,13 @@ window.addEventListener('DOMContentLoaded', function () {
     userLogBtn.addEventListener('click', function () {
         console.log('userLogBtn');
         // fetchUserLog('A123456');
-        fetchUserLog('A876771');
+        fetchUserLog(userData.userName);
     });
 
     postUserLogBtn.addEventListener('click', function () {
         console.log('postUserLogBtn');
-        var userData = new Object();
-        userData.userId = "1234567890";
-        userData.loginDate = "2024/05/30 15:46:30";
-        userData.answerDate = "2024/05/30 15:48:27";
-        userData.choice = [4, 3, 1, 2, 3, 1, 4, 2, 1, 2];
-        userData.point = 8;
-        console.log('userData(Object): ' + userData);
-        console.log('userData(JSON): ' + JSON.stringify(userData));
-        logAnswer(JSON.stringify(userData));
+        console.log('userData(JSON)\n' + JSON.stringify(userData));
+        logAnswer(userData);
     });
 });
 
@@ -245,17 +219,23 @@ function generateUUID() {
     return uuid;
 }
 
+function getUUID() {
+    return localStorage.getItem('uuid');
+}
+
 function saveUuidToLocalStorage() {
     // ローカルストレージから UUID を取得する
-    const storedUuid = localStorage.getItem('uuid');
+    const storedUuid = getUUID();
 
     // UUID が保存されていない場合、新しい UUID を生成して保存する
     if (!storedUuid) {
         const uuid = crypto.randomUUID();
         localStorage.setItem('uuid', uuid);
-    } else {
-
     }
 }
 
 saveUuidToLocalStorage();
+
+function getRandomNum(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
+}
