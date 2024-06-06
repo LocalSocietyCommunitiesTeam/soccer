@@ -6,9 +6,10 @@ window.addEventListener('DOMContentLoaded', function () {
     userName.addEventListener('keydown', function (e) {
         if (e.key === 'Enter') {
             window.alert('ユーザー名テキストフィールドでEnterキーを押下');
+            const startBtn = document.getElementById('sql_loginBtn'); // クイズ開始ボタン
 
             this.blur();
-            this.click();
+            startBtn.click();
         }
     });
 
