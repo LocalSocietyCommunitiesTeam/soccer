@@ -21,6 +21,7 @@ var userData = {
     ],
     "point": 8
 };
+var resultText = document.getElementById('resultText');
 
 function addParametersToURL(url, params) {
     // URLオブジェクトを作成
@@ -41,82 +42,94 @@ function addParametersToURL(url, params) {
 
 async function fetchAllQuizzes() {
     const newURL = addParametersToURL(WEBAPPURL, { action: 'allQuizzes' });
-
+    let message = '';
     try {
         const response = await fetch(newURL, {
             timeout: 10000
         });
         const quizzes = await response.json();
-        quizData = quizzes;
+        quizData = quizzes.result;
         console.log(quizData);
+        message = quizData;
     } catch (e) {
         console.error(e.name, e.message);
+        message = e;
     }
+
+    resultText.innerText = message;
 }
 
 async function fetchAllRandomQuizzes() {
     const newURL = addParametersToURL(WEBAPPURL, { action: 'allRandomQuizzes' });
-
+    let message = '';
     try {
         const response = await fetch(newURL, {
             timeout: 10000
         });
         const quizzes = await response.json();
-        quizData = quizzes;
+        quizData = quizzes.result;
         console.log(quizData);
+        message = quizData;
     } catch (e) {
         console.error(e.name, e.message);
+        message = e;
     }
 }
 
 async function fetchRandomQuizzes(num) {
     const newURL = addParametersToURL(WEBAPPURL, { action: 'randomQuizzes', limitNumOfQuiz: num });
-
+    let message = '';
     try {
         const response = await fetch(newURL, {
             timeout: 10000
         });
         const quizzes = await response.json();
-        quizData = quizzes;
+        quizData = quizzes.result;
         console.log(quizData);
+        message = quizData;
     } catch (e) {
         console.error(e.name, e.message);
+        message = e;
     }
 }
 
 async function fetchAllLogs() {
     const newURL = addParametersToURL(WEBAPPURL, { action: 'allLogs' });
-
+    let message = '';
     try {
         const response = await fetch(newURL, {
             timeout: 10000
         });
         const logs = await response.json();
-        logData = logs;
+        logData = logs.result;
         console.log(logData);
+        message = logData;
     } catch (e) {
         console.error(e.name, e.message);
+        message = e;
     }
 }
 
 async function fetchUserLog(userId) {
     const newURL = addParametersToURL(WEBAPPURL, { action: 'userLog', userId: userId });
-
+    let message = '';
     try {
         const response = await fetch(newURL, {
             timeout: 10000
         });
         const log = await response.json();
-        logData = log;
+        logData = log.result;
         console.log(logData);
+        message = logData;
     } catch (e) {
         console.error(e.name, e.message);
+        message = e;
     }
 }
 
 async function logAnswer(userId, loginDate, answerDate, choice, point) {
     const newURL = addParametersToURL(WEBAPPURL, { action: 'setUserLog' });
-
+    let message = '';
     try {
         const response = await fetch(newURL, {
             method: 'POST',
@@ -134,10 +147,12 @@ async function logAnswer(userId, loginDate, answerDate, choice, point) {
         });
 
         const data = response.json();
+        message = data.result;
 
-        return data;
+        return data.result;
     } catch (e) {
         console.error(e.name, e.message);
+        message = e;
     }
 }
 
@@ -150,8 +165,6 @@ window.addEventListener('DOMContentLoaded', function () {
     const allLogBtn = document.getElementById('allLogBtn');
     const userLogBtn = document.getElementById('userLogBtn');
     const postUserLogBtn = document.getElementById('postUserLogBtn');
-
-    const date = new Date();
 
     quizBtn.addEventListener('click', function () {
         console.log('quizBtn');
