@@ -154,9 +154,9 @@ async function logAnswer(userId, loginDate, answerDate, choice, point) {
         });
 
         const data = response.json();
-        message = data.result;
+        message = data.resultMessage;
 
-        return data.result;
+        return data.resultMessage;
     } catch (e) {
         console.error(e.name, e.message);
         message = e;
