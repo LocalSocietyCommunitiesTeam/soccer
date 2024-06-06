@@ -20,29 +20,25 @@ window.addEventListener('DOMContentLoaded', function () {
         const loginErrorArea = document.getElementsByClassName('sql_loginErrorArea')[0];
 
         if (isFilled(userName)) {
-            // ローダーを表示
-            showLoader();
-
+            // ログインセクションを非表示
+            loginSec.classList.add('com_hiddenFlg');
             // ログインエラーエリアを非表示
             loginErrorArea.classList.add('sql_loginErrorHidden');
-
+            // ユーザー名テキストフィールドを正常状態に戻す
             userName.parentElement.classList.remove('com_textField_error');
-            loginSec.classList.add('com_hiddenFlg');
+
+            // ユーザーデータを登録
+            userData.userName = userName.value; // ユーザー名
+            userData.loginDate = formatDate(new Date()); // ログイン日時
+
+            // クイズセクションを表示
             quizSec.classList.remove('com_hiddenFlg');
-
-            /* ここでデータを登録 */
-            // ユーザー名
-            // ログイン日時
-
         } else {
             userName.value = '';
             userName.parentElement.classList.add('com_textField_error');
             // ログインエラーエリアを表示
             loginErrorArea.classList.remove('com_hiddenFlg');
         }
-
-        // ローダーを非表示
-        hideLoader();
     });
 
     // 要素の文字数が1文字以上か判定
