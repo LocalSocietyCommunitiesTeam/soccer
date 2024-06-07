@@ -30,6 +30,9 @@ var logData = {
 // SoccerQuizAppDB2024スプレッドシートのGoogle App ScriptのWEBアプリURL
 const WEBAPPURL = 'https://script.google.com/macros/s/AKfycbx0ghxxDOCkNzh1E1aeFkgdR9FaciepvNveDTfCiUJNMZYjYe6bAGc43k7q1dBeldE2/exec';
 
+// タイムアウト時間を30秒に設定
+const timeout = 30000;
+
 // すべてのクイズを取得する非同期関数
 async function fetchAllQuizzes() {
     // WEBAPPURLにパラメータを追加した新しいURLを作成
@@ -41,7 +44,7 @@ async function fetchAllQuizzes() {
     try {
         // 10秒のタイムアウトを設定してAPIにリクエストを送信
         const response = await fetch(newURL, {
-            timeout: 10000
+            timeout: timeout
         });
 
         // レスポンスからJSONデータをパース
@@ -78,7 +81,7 @@ async function fetchAllRandomQuizzes() {
     try {
         // 10秒のタイムアウトを設定してAPIにリクエストを送信
         const response = await fetch(newURL, {
-            timeout: 10000
+            timeout: timeout
         });
 
         // レスポンスからJSONデータをパース
@@ -112,7 +115,7 @@ async function fetchRandomQuizzes(num) {
     try {
         // 10秒のタイムアウトを設定してAPIにリクエストを送信
         const response = await fetch(newURL, {
-            timeout: 10000
+            timeout: timeout
         });
 
         // レスポンスからJSONデータをパース
@@ -149,7 +152,7 @@ async function fetchAllLogs() {
     try {
         // 10秒のタイムアウトを設定してAPIにリクエストを送信
         const response = await fetch(newURL, {
-            timeout: 10000
+            timeout: timeout
         });
 
         // レスポンスからJSONデータをパース
@@ -186,7 +189,7 @@ async function fetchUserLog(userName) {
     try {
         // 10秒のタイムアウトを設定してAPIにリクエストを送信
         const response = await fetch(newURL, {
-            timeout: 10000
+            timeout: timeout
         });
 
         // レスポンスからJSONデータをパース
@@ -225,7 +228,7 @@ async function logAnswer(data) {
                 "Content-Type": "application/x-www-form-urlencoded"
             },
             body: JSON.stringify(data),
-            timeout: 10000
+            timeout: timeout
         });
 
         // レスポンスからJSONデータをパース
