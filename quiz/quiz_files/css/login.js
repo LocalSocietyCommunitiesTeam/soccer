@@ -5,7 +5,6 @@ window.addEventListener('DOMContentLoaded', function () {
 
     userName.addEventListener('keydown', function (e) {
         if (e.key === 'Enter') {
-            window.alert('ユーザー名テキストフィールドでEnterキーを押下');
             const startBtn = document.getElementById('sql_loginBtn'); // クイズ開始ボタン
 
             this.blur();
@@ -16,7 +15,7 @@ window.addEventListener('DOMContentLoaded', function () {
     // クイズ開始ボタンを押下
     startBtn.addEventListener('click', function () {
         const loginSec = document.getElementsByClassName('sql_loginSec')[0];
-        const quizSec = document.getElementsByClassName('com_quizSec')[0];
+        const quizSec = document.getElementsByClassName('sqq_quizSec')[0];
         const userName = document.getElementById('sql_userName');
         const loginErrorArea = document.getElementsByClassName('sql_loginErrorArea')[0];
 
@@ -41,13 +40,13 @@ window.addEventListener('DOMContentLoaded', function () {
             loginErrorArea.classList.remove('com_hiddenFlg');
         }
     });
-
-    // 要素の文字数が1文字以上か判定
-    function isFilled(element) {
-        if (element.value.trim().length > 0) {
-            return true;
-        } else {
-            return false;
-        }
-    }
 });
+
+// 要素の文字数が1文字以上か判定
+function isFilled(element) {
+    if (element.value.trim().length > 0) {
+        return true;
+    } else {
+        return false;
+    }
+}

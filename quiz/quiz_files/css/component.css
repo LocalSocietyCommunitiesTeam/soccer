@@ -198,20 +198,52 @@
 /* プログレスバー */
 .c_progressbar {
     display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.c_progressbar_circle {
+    border-radius: 50%;
+    background-color: #FABF00;
+}
+
+.c_progressbar_big {
+    width: 24px;
+    height: 24px;
+}
+
+.c_progressbar_small {
+    width: 16px;
+    height: 16px;
+}
+
+.c_progressbar_bar {
+    width: calc((100% - 24px * 4 - 16px * 6) / 8);
+    height: 4px;
+    background-color: #FABF00;
+}
+
+.c_progressbar_big:has(.c_progressbar_typo_number) {
+    display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.c_progressbar>li {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
+.c_progressbar_typo_number {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 14px;
+    color: #2E2E2E;
+}
+
+.c_progressbar_active {
+    background-color: #FABF00;
+}
+
+.c_progressbar_active~.c_progressbar_bar {
     background-color: #F0F0F0;
 }
 
-.c_progressbar>li:not(:first-child)::before {
-    content: "";
-    width: 20px;
-    height: 8px;
-    background-color: #2E2E2E;
+.c_progressbar_active~.c_progressbar_bar+.c_progressbar_circle {
+    background-color: #D5D5D5;
 }
