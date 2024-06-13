@@ -66,7 +66,7 @@
 }
 
 /* 選択肢エリア */
-.sqq_choiceArea {
+.sqq_optionList {
     padding: 24px 12px 0 12px;
 }
 
@@ -74,11 +74,11 @@
     pointer-events: none;
 }
 
-.sqq_choiceArea>li:not(:first-child) {
+.sqq_optionList>li:not(:first-child) {
     margin-top: 16px;
 }
 
-.sqq_choiceArea label {
+.sqq_optionList label {
     display: block;
     text-align: center;
     margin: 0 auto;
@@ -91,7 +91,7 @@
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
-.sqq_choiceArea input {
+.sqq_optionList input {
     display: none;
 }
 

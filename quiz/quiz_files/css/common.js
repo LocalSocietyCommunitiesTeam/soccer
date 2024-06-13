@@ -1,11 +1,6 @@
 /** 共通JavaScript **/
 // クイズデータ
-var quizData = {
-    quizId: null,
-    question: null,
-    option: [],
-    answer: null
-};
+var quizData = [];
 
 // ユーザーデータ
 var userData = {
@@ -14,18 +9,11 @@ var userData = {
     loginDate: null,
     answerDate: null,
     option: [],
-    point: null
+    point: 0
 };
 
 // ログデータ
-var logData = {
-    uuid: null,
-    userName: null,
-    loginDate: null,
-    answerDate: null,
-    choice: [],
-    point: null
-};
+var logData = [];
 
 // SoccerQuizAppDB2024スプレッドシートのGoogle App ScriptのWEBアプリURL
 const WEBAPPURL = 'https://script.google.com/macros/s/AKfycbx0ghxxDOCkNzh1E1aeFkgdR9FaciepvNveDTfCiUJNMZYjYe6bAGc43k7q1dBeldE2/exec';
