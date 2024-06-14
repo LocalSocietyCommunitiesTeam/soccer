@@ -1,6 +1,6 @@
 /** 共通JavaScript **/
 // クイズデータ
-var quizData = [];
+var quizData;
 
 // ユーザーデータ
 var userData = {
@@ -109,10 +109,7 @@ async function fetchRandomQuizzes(num) {
         // レスポンスからJSONデータをパース
         const result = await response.json();
 
-        quizData.quizId = result.result.quizId;
-        quizData.question = result.result.question;
-        quizData.option = result.result.option;
-        quizData.answer = result.result.answer;
+        quizData = result.result;
     } catch (e) {
         const header = document.getElementsByTagName('header')[0]; // ヘッダー
         const homeSec = document.getElementsByClassName('sqh_homeSec')[0]; // ホームセクション

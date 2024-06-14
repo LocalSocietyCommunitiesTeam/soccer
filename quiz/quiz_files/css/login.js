@@ -59,11 +59,11 @@ function setFirstQuiz() {
     // 要素を取得
     const quizNum = document.getElementById('sqq_quizNum'); // 問題番号
     const question = document.getElementById('sqq_question'); // 問題文
-    const option = document.getElementsByName('sqq_option'); // 選択肢
+    const optionText = document.getElementsByClassName('sqq_optionTypo'); // 選択肢テキスト
 
     quizNum.innerText = '1';
     question.innerText = quizData[0].question;
     for (let i = 0; i < quizData[0].option.length; i++) {
-        option[i].innerText = quizData[0].option[i];
+        optionText[i].innerText = quizData[0].option[i];
     }
 }

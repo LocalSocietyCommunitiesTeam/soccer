@@ -4,11 +4,79 @@ window.addEventListener('DOMContentLoaded', function () {
     const option = document.getElementsByName('sqq_option');
 
     // 選択肢ボタン押下時の処理
-    option.addEventListener('click', function () {
+    for (let i = 0; i < option.length; i++) {
+        option[i].addEventListener('change', function () {
+            if (this.checked) {
+                // 要素を取得
+                const quizNum = document.getElementById('sqq_quizNum'); // 問題番号
+                const option = document.getElementsByName('sqq_option'); // 選択肢ボタン
 
+                // 現在の問題番号を取得
+                const currentQuizNum = parseInt(quizNum.innerText);
 
-    });
+                // 選択肢を非活性化
+                disactivateOptions();
+
+                console.log('選択：' + (i + 1) + '番目');
+                console.log('正解：' + quizData[currentQuizNum - 1].answer + '番目');
+
+                // 正誤判定
+                if (judgeAnswer(currentQuizNum, i + 1)) {
+                    // 正解の場合
+                    // 〇を表示
+                    const correctImg = document.getElementById('correct');
+                    correctImg.classList.remove('sqq_none');
+                    correctImg.classList.remove('sqq_transmission');
+                } else {
+                    // 不正解の場合
+                    // ×を表示
+                    const incorrectImg = document.getElementById('incorrect');
+                    incorrectImg.classList.remove('sqq_none');
+                    incorrectImg.classList.remove('sqq_transmission');
+                    // 押下した選択肢をグレーに変更
+                    this.classList.add('sqq_optionGray');
+                }
+
+                // 正解の選択肢をオレンジ色に変更
+                option[quizData[currentQuizNum - 1].answer - 1].classList.add('sqq_choiceOrange');
+                // 1.5秒待つ
+                // プログレスバーを進める
+                // 選択肢を活性化
+                activateOptions();
+                // 次のクイズデータをセット
+            }
+        });
+    }
 });
+
+// 選択肢を非活性化する関数
+function disactivateOptions() {
+    const option = document.getElementsByName('sqq_option');
+
+    for (let i = 0; i < option.length; i++) {
+        option[i].classList.add('sqq_noClick');
+    }
+};
+
+// 選択肢を活性化する関数
+function activateOptions() {
+    const option = document.getElementsByName('sqq_option');
+
+    for (let i = 0; i < option.length; i++) {
+        option[i].classList.remove('sqq_optionGray');
+    }
+};
+
+// 正誤判定する関数
+// 引数：現在の問題番号、押下した選択肢番号
+// 返り値：正解の場合はtrue、不正解の場合はfalse
+function judgeAnswer(currentQuizNum, choiceNum) {
+    if (choiceNum == quizData[currentQuizNum - 1].answer) {
+        return true;
+    } else {
+        return false;
+    }
+}
 
 // 解答データを追加する関数
 function addAnswerData() {
@@ -181,7 +249,7 @@ function updateQuiz() {
 //                         incorrectImg.classList.remove('sqq_none');
 //                         incorrectImg.classList.remove('sqq_transmission');
 //                         // 誤答の選択肢をグレー、正解の選択肢をオレンジ
-//                         select[selectValue - 1].classList.add('sqq_choiceGray');
+//                         select[selectValue - 1].classList.add('sqq_optionGray');
 //                         select[record.Answer - 1].classList.add('sqq_choiceOrange');
 //                     }
 //                 }).then(function () {
@@ -202,7 +270,7 @@ function updateQuiz() {
 
 //                                 // 正解・不正解の選択肢を目立たせるのを辞める
 //                                 select[answerNum - 1].classList.remove('sqq_choiceOrange');
-//                                 select[selectValue - 1].classList.remove('sqq_choiceGray');
+//                                 select[selectValue - 1].classList.remove('sqq_optionGray');
 
 //                                 //スクロールバーを進める
 //                                 progressCircle[quizNum - 2].classList.remove('sqc_progressBar_active');

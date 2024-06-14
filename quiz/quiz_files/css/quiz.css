@@ -70,10 +70,6 @@
     padding: 24px 12px 0 12px;
 }
 
-.sqq_noClick {
-    pointer-events: none;
-}
-
 .sqq_optionList>li:not(:first-child) {
     margin-top: 16px;
 }
@@ -95,15 +91,19 @@
     display: none;
 }
 
+.sqq_noClick+label {
+    pointer-events: none;
+}
+
 .sqq_choiceOrange+label {
     background-color: #F29F00;
 }
 
-.sqq_choiceGray+label {
+.sqq_optionGray+label {
     background-color:#C4C4C4;
 }
 
-.sqq_choiceTypo {
+.sqq_optionTypo {
     color: #000000;
     font-size: 14px;
     font-family: Noto Sans JP;
