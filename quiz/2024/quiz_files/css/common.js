@@ -224,6 +224,8 @@ async function logAnswer(data) {
     } catch (e) {
         // エラーが発生した場合、エラー情報をコンソールに出力
         console.error(e);
+    } finally {
+        hideLoader();
     }
 }
 

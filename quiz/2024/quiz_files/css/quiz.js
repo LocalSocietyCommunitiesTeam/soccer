@@ -10,40 +10,59 @@ window.addEventListener('DOMContentLoaded', function () {
                 // 要素を取得
                 const quizNum = document.getElementById('sqq_quizNum'); // 問題番号
                 const option = document.getElementsByName('sqq_option'); // 選択肢ボタン
-
+                const correctImg = document.getElementById('correct'); // 〇アイコン
+                const incorrectImg = document.getElementById('incorrect'); // ×アイコン
                 // 現在の問題番号を取得
                 const currentQuizNum = parseInt(quizNum.innerText);
 
                 // 選択肢を非活性化
                 disactivateOptions();
 
-                console.log('選択：' + (i + 1) + '番目');
-                console.log('正解：' + quizData[currentQuizNum - 1].answer + '番目');
+                // 解答をデータに追加
+                userData.choice.push(i + 1);
 
                 // 正誤判定
                 if (judgeAnswer(currentQuizNum, i + 1)) {
                     // 正解の場合
                     // 〇を表示
-                    const correctImg = document.getElementById('correct');
-                    correctImg.classList.remove('sqq_none');
-                    correctImg.classList.remove('sqq_transmission');
+                    correctImg.classList.remove('com_hiddenFlg');
+                    // 点数を加点
+                    userData.point = userData.point + 1;
                 } else {
                     // 不正解の場合
                     // ×を表示
-                    const incorrectImg = document.getElementById('incorrect');
-                    incorrectImg.classList.remove('sqq_none');
-                    incorrectImg.classList.remove('sqq_transmission');
+                    incorrectImg.classList.remove('com_hiddenFlg');
                     // 押下した選択肢をグレーに変更
                     this.classList.add('sqq_optionGray');
                 }
 
                 // 正解の選択肢をオレンジ色に変更
-                option[quizData[currentQuizNum - 1].answer - 1].classList.add('sqq_choiceOrange');
+                option[quizData[currentQuizNum - 1].answer - 1].classList.add('sqq_optionOrange');
                 // 1.5秒待つ
-                // プログレスバーを進める
-                // 選択肢を活性化
-                activateOptions();
-                // 次のクイズデータをセット
+                setTimeout(() => {
+                    // プログレスバーを進める
+                    updateProgressbar();
+
+                    // 選択肢を活性化
+                    activateOptions();
+
+                    // 〇×アイコンを非表示
+                    if (!correctImg.classList.contains('com_hiddenFlg')) {
+                        correctImg.classList.add('com_hiddenFlg');
+                    }
+                    if (!incorrectImg.classList.contains('com_hiddenFlg')) {
+                        incorrectImg.classList.add('com_hiddenFlg');
+                    }
+
+                    // 次のクイズデータをセット
+                    if (currentQuizNum == 10) {
+                        showLoader();
+                        userData.answerDate = formatDate(new Date());
+                        logAnswer(userData);
+                    } else {
+                        updateQuiz(currentQuizNum);
+                    }
+                }, 1500);
             }
         });
     }
@@ -55,6 +74,9 @@ function disactivateOptions() {
 
     for (let i = 0; i < option.length; i++) {
         option[i].classList.add('sqq_noClick');
+        if (option[i].checked) {
+            option[i].checked = false;
+        }
     }
 };
 
@@ -63,7 +85,9 @@ function activateOptions() {
     const option = document.getElementsByName('sqq_option');
 
     for (let i = 0; i < option.length; i++) {
+        option[i].classList.remove('sqq_optionOrange');
         option[i].classList.remove('sqq_optionGray');
+        option[i].classList.remove('sqq_noClick');
     }
 };
 
@@ -72,65 +96,43 @@ function activateOptions() {
 // 返り値：正解の場合はtrue、不正解の場合はfalse
 function judgeAnswer(currentQuizNum, choiceNum) {
     if (choiceNum == quizData[currentQuizNum - 1].answer) {
+        console.log('正解');
         return true;
     } else {
+        console.log('不正解');
         return false;
-    }
-}
-
-// 解答データを追加する関数
-function addAnswerData() {
-    // 要素を取得
-    const quizNum = document.getElementById('sqq_quizNum'); // 問題番号
-    const option = document.getElementsByName('sqq_option'); // 選択肢ボタン
-
-    // 現在の問題番号を取得
-    const currentQuizNum = parseInt(quizNum.innerText);
-
-    for (let i = 0; i < option.length; i++) {
-        if (option[i].checked) {
-            userData.choice = i + 1;
-
-            // 正解の場合、解答データの点数を加点
-            if (quizData[currentQuizNum - 1].answer == (i + 1)) {
-                quizData[currentQuizNum - 1].point = parseInt(quizData[currentQuizNum - 1].point) + 1;
-            }
-        }
     }
 }
 
 // プログレスバーを更新する関数
 function updateProgressbar() {
     // 要素を取得
-    const progressbar = document.getElementsByClassName('c_progressbar')[0]; // プログレスバー
-    const circle = progressbar.getElementsByClassName('c_progressbar_circle'); // プログレスバーの円
+    const circle = document.getElementsByClassName('c_progressbar_circle'); // プログレスバーの円
 
     // 活性クラスを次の円へ移動
-    for (let i = 0; i < circle.length; i++) {
+    for (let i = 1; i < circle.length; i++) {
         if (circle[i - 1].classList.contains('c_progressbar_active')) {
             circle[i - 1].classList.remove('c_progressbar_active');
             circle[i].classList.add('c_progressbar_active');
+            break;
         }
     }
 }
 
 // 問題情報を更新する関数
-function updateQuiz() {
+function updateQuiz(currentQuizNum) {
     // 要素を取得
     const quizNum = document.getElementById('sqq_quizNum'); // 問題番号
     const question = document.getElementById('sqq_question'); // 問題文
-    const option = document.getElementsByName('sqq_option'); // 選択肢
-
-    // 現在の問題番号を取得
-    const currentQuizNum = parseInt(quizNum.innerText);
+    const optionText = document.getElementsByClassName('sqq_optionTypo'); // 選択肢テキスト
 
     // 問題番号を更新
     quizNum.innerText = currentQuizNum + 1;
     // 問題文を更新
     question.innerText = quizData[currentQuizNum].question;
     // 選択肢を更新
-    for (let i = 0; i < option.length; i++) {
-        option[i].innerText = quizData[currentQuizNum].option[i];
+    for (let i = 0; i < optionText.length; i++) {
+        optionText[i].innerText = quizData[currentQuizNum].option[i];
     }
 }
 
@@ -237,20 +239,20 @@ function updateQuiz() {
 //                     if (selectValue == record.Answer) {
 //                         // 正解の場合
 //                         // 〇を表示
-//                         correctImg.classList.remove('sqq_none');
+//                         correctImg.classList.remove('com_hiddenFlg');
 //                         correctImg.classList.remove('sqq_transmission');
 //                         // 回答した選択肢をオレンジ
-//                         select[selectValue - 1].classList.add('sqq_choiceOrange');
+//                         select[selectValue - 1].classList.add('sqq_optionOrange');
 //                         // 得点を加算
 //                         point += 1;
 //                     } else {
 //                         // 不正解の場合
 //                         // ×を表示
-//                         incorrectImg.classList.remove('sqq_none');
+//                         incorrectImg.classList.remove('com_hiddenFlg');
 //                         incorrectImg.classList.remove('sqq_transmission');
 //                         // 誤答の選択肢をグレー、正解の選択肢をオレンジ
 //                         select[selectValue - 1].classList.add('sqq_optionGray');
-//                         select[record.Answer - 1].classList.add('sqq_choiceOrange');
+//                         select[record.Answer - 1].classList.add('sqq_optionOrange');
 //                     }
 //                 }).then(function () {
 //                     quizTable.where('QuizId').equals(quizNum + 1).first(function (record) {
@@ -265,11 +267,11 @@ function updateQuiz() {
 
 //                             setTimeout(function () {
 //                                 // ○×アイコンを非表示に変更
-//                                 correctImg.classList.add('sqq_none');
-//                                 incorrectImg.classList.add('sqq_none');
+//                                 correctImg.classList.add('com_hiddenFlg');
+//                                 incorrectImg.classList.add('com_hiddenFlg');
 
 //                                 // 正解・不正解の選択肢を目立たせるのを辞める
-//                                 select[answerNum - 1].classList.remove('sqq_choiceOrange');
+//                                 select[answerNum - 1].classList.remove('sqq_optionOrange');
 //                                 select[selectValue - 1].classList.remove('sqq_optionGray');
 
 //                                 //スクロールバーを進める
