@@ -35,7 +35,7 @@
     <!-- メイン -->
     <main>
         <!-- ホーム画面 -->
-        <section class="sqh_homeSec">
+        <section class="com_screenSec sqh_homeSec">
             <div class="sqh_centerImgWrapper"><img src="./quiz_files/image/laurel_wreath.svg" alt="月桂冠"><img
                     src="./quiz_files/image/usakame.svg" alt="うさりん・かめろん"></div>
             <div class="sqh_nextBtnWrapper">
@@ -46,7 +46,7 @@
         </section>
 
         <!-- ログイン画面 -->
-        <section class="sql_loginSec com_hiddenFlg">
+        <section class="com_screenSec sql_loginSec com_hiddenFlg">
             <form name="loginForm" class="sql_loginForm">
                 <h3>ログイン</h3>
                 <div class="sql_textFieldWrapper">
@@ -79,7 +79,7 @@
         </section>
 
         <!-- クイズ画面 -->
-        <section class="sqq_quizSec com_hiddenFlg">
+        <section class="com_screenSec sqq_quizSec com_hiddenFlg">
             <!-- プログレスバーエリア -->
             <div class="sqq_progressbarArea">
                 <ul class="c_progressbar">
@@ -141,7 +141,7 @@
                         <li>
                             <div class="sqq_choiceBox">
                                 <input name="sqq_option" id="sqq_option1" value="1" type="radio"><label
-                                    for="sqq_option1">
+                                    for="sqq_option1" tabindex="0">
                                     <p class="sqq_optionTypo"></p>
                                 </label>
                             </div>
@@ -149,7 +149,7 @@
                         <li>
                             <div class="sqq_choiceBox">
                                 <input name="sqq_option" id="sqq_option2" value="2" type="radio"><label
-                                    for="sqq_option2">
+                                    for="sqq_option2" tabindex="0">
                                     <p class="sqq_optionTypo"></p>
                                 </label>
                             </div>
@@ -157,7 +157,7 @@
                         <li>
                             <div class="sqq_choiceBox">
                                 <input name="sqq_option" id="sqq_option3" value="3" type="radio"><label
-                                    for="sqq_option3">
+                                    for="sqq_option3" tabindex="0">
                                     <p class="sqq_optionTypo"></p>
                                 </label>
                             </div>
@@ -165,7 +165,7 @@
                         <li>
                             <div class="sqq_choiceBox">
                                 <input name="sqq_option" id="sqq_option4" value="4" type="radio"><label
-                                    for="sqq_option4">
+                                    for="sqq_option4" tabindex="0">
                                     <p class="sqq_optionTypo"></p>
                                 </label>
                             </div>
@@ -176,7 +176,7 @@
         </section>
 
         <!-- 結果画面 -->
-        <section class="sqr_resultSec com_hiddenFlg">
+        <section class="com_screenSec sqr_resultSec com_hiddenFlg">
             <div class="sqr_whiteCover">
                 <p id="sqr_message" class="spr_typo_message"></p>
                 <div class="sqr_iconArea">
@@ -1076,10 +1076,11 @@
         </section>
 
         <!-- エラー画面 -->
-        <section class="com_errorSec com_hiddenFlg">
+        <section class="com_screenSec com_errorSec com_hiddenFlg">
             <h2>エラー</h2>
             <div class="com_errLead">
-                <p>エラー内容</p>
+                <img src="">
+                <p class="com_errLeadText">エラー内容</p>
             </div>
         </section>
     </main>

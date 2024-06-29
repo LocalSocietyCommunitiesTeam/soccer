@@ -54,12 +54,17 @@ window.addEventListener('DOMContentLoaded', function () {
                         incorrectImg.classList.add('com_hiddenFlg');
                     }
 
-                    // 次のクイズデータをセット
+                    
                     if (currentQuizNum == 10) {
+                        // 最終問題の場合
+                        // ローダーを表示
                         showLoader();
+
                         userData.answerDate = formatDate(new Date());
+                        // ログをPOST送信
                         logAnswer(userData);
                     } else {
+                        // 1～9問目の場合、次のクイズデータをセット
                         updateQuiz(currentQuizNum);
                     }
                 }, 1500);
@@ -95,11 +100,14 @@ function activateOptions() {
 // 引数：現在の問題番号、押下した選択肢番号
 // 返り値：正解の場合はtrue、不正解の場合はfalse
 function judgeAnswer(currentQuizNum, choiceNum) {
+    console.log('選択：' + choiceNum);
+    console.log('答え：' + quizData[currentQuizNum - 1].answer);
+
     if (choiceNum == quizData[currentQuizNum - 1].answer) {
-        console.log('正解');
+        console.log('正解\n');
         return true;
     } else {
-        console.log('不正解');
+        console.log('不正解\n');
         return false;
     }
 }

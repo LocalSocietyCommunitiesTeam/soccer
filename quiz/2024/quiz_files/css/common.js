@@ -8,7 +8,7 @@ var userData = {
     userName: null,
     loginDate: null,
     answerDate: null,
-    option: [],
+    choice: [],
     point: 0
 };
 
@@ -221,9 +221,20 @@ async function logAnswer(data) {
 
         // 結果メッセージをコンソールに出力
         console.log('result.resultMessage: ' + result.resultMessage);
+
+        // 要素を取得
+        const quizSec = document.getElementsByClassName('sqq_quizSec')[0]; // クイズセクション
+        const resultSec = document.getElementsByClassName('sqr_resultSec')[0]; // 結果セクション
+
+        // クイズ画面を結果画面に切り替え
+        quizSec.classList.add('com_hiddenFlg');
+        resultSec.classList.remove('com_hiddenFlg');
     } catch (e) {
-        // エラーが発生した場合、エラー情報をコンソールに出力
+        // エラーが発生した場合
+        // エラー情報をコンソールに出力
         console.error(e);
+        // エラー画面を表示
+        displayErrorScreen(e.message);
     } finally {
         hideLoader();
     }
@@ -319,4 +330,21 @@ function formatDate(date) {
 
     // フォーマット済みの日付文字列を返す
     return output;
+}
+
+// エラー画面を表示する関数
+function displayErrorScreen(errMsg) {
+    // 要素を取得
+    const sec = document.getElementsByClassName('com_screenSec'); // 画面セクション
+    const errorSec = document.getElementsByClassName('com_errorSec')[0]; // エラーセクション
+
+    // エラーセクション以外の画面セクションを非表示
+    for (let i = 0; i < sec.length; i++) {
+        if (sec[i] != errorSec) {
+            sec[i].classList.add('com_hiddenFlg');
+        }
+    }
+
+    // エラーセクションを表示
+    errorSec.classList.remove('com_hiddenFlg');
 }
