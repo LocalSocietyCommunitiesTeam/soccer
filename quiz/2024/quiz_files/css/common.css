@@ -99,12 +99,13 @@ section {
     background-color: #00A08E;
 }
 
-.com_errorSec>h2 {
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 26px;
-    color: #2E2E2E;
-    text-align: center;
+.com_errImg {
+    display: flex;
+    justify-content: center;
+}
+
+.com_errImg>img {
+    width: 64%;
 }
 
 .com_errLead {
@@ -116,6 +117,10 @@ section {
     font-size: 16px;
     line-height: 24px;
     color: #2E2E2E;
+}
+
+.com_errLink {
+    padding-top: 48px;
 }
 
 /* フッター */

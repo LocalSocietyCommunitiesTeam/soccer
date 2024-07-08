@@ -127,122 +127,60 @@
 //     });
 // });
 
-// フィードバックを表示する関数（引数：得点）
-function feedback(point) {
-    // 要素を取得
-    const fbMsg = document.getElementById('sqr_message'); // フィードバックメッセージ
-    const fbIcon = document.getElementsByClassName('sqr_charactorIcon'); // フィードバックアイコン
-    const numOfCorrects = document.getElementById('sqr_numOfCorrects'); // 正解数
+// window.addEventListener('DOMContentLoaded', function () {
+//     // 正解数の初期化
+//     let point = 0;
 
-    // 得点によってフィードバックメッセージとアイコンを出し分け
-    if (0 <= point && point < 5) {
-        // 0点以上4点以下の場合
-        fbMsg.innerText = 'もっと頑張ろう！';
-        fbIcon[0].classList.add('sqr_showFbIcon');
-    } else if (5 <= point && point < 8) {
-        // 5点以上7点以下の場合
-        fbMsg.innerText = 'その調子！';
-        fbIcon[1].classList.add('sqr_showFbIcon');
-    } else if (8 <= point && point <= 10) {
-        // 8点以上の場合
-        fbMsg.innerText = 'おめでとう！！';
-        fbIcon[2].classList.add('sqr_showFbIcon');
-    } else {
-        // エラー
-        console.log('Error：得点が範囲外です。');
-        window.alert('Error：得点が範囲外です。');
-    }
-
-    // 正解数を表示
-    numOfCorrects.innerText = point;
-}
-
-// 解答情報を表示する関数
-function showAnswerInfo(questions, options, choices) {
-    // 要素を取得
-    const quizNum = document.getElementsByClassName('sqr_quizNum'); // クイズ番号
-    const statement = document.getElementsByClassName('sqr_typo_statement'); // 問題文
-    const option = document.getElementsByClassName('sqr_option'); // 選択肢
-    const optionText = document.getElementsByClassName('sqr_typo_optionText'); // 選択肢テキスト
-    const correctIcon = document.getElementsByClassName('sqr_correctIcon'); // 正解アイコン
-    const incorrectIcon = document.getElementsByClassName('sqr_incorrectIcon'); // 不正解アイコン
-
-    for (let i = 0; i < LIMIT_NUM_OF_QUIZ; i++) {
-        // 問題番号を表示
-        quizNum[i].innerText = i + 1;
-
-        // 問題文を表示
-        optionText[i].innerText = questions[i];
-
-
-    }
-}
-
-window.addEventListener('DOMContentLoaded', function () {
-    
-
-    // フィードバックを表示
-    feedback(parseInt(userData.point));
-
-    // 解答情報を表示
-    showAnswerInfo(quizData.question, quizData.option, userData.choice);
-
-
-
-
-    // 正解数の初期化
-    let point = 0;
-
-    // クイズ番号を表示
-    quizNum[(quiz.QuizId - 1) * 2].innerText = quiz.QuizId;
-    quizNum[(quiz.QuizId - 1) * 2 + 1].innerText = quiz.QuizId;
-    // 問題文を表示
-    statement[quiz.QuizId - 1].innerText = quiz.Question;
-    // 選択肢テキストを表示
-    optionText[(quiz.QuizId - 1) * 4].innerText = quiz.Option1;
-    optionText[(quiz.QuizId - 1) * 4 + 1].innerText = quiz.Option2;
-    optionText[(quiz.QuizId - 1) * 4 + 2].innerText = quiz.Option3;
-    optionText[(quiz.QuizId - 1) * 4 + 3].innerText = quiz.Option4;
-    // 正解選択肢を強調
-    option[(quiz.QuizId - 1) * 4 + (quiz.Answer - 1)].classList.add('sqr_correctOption');
-    // 正誤判定
-    if (record.Choice[quiz.QuizId - 1] == quiz.Answer) {
-        // 正解の場合
-        // 正解アイコンの表示
-        correctIcon[quiz.QuizId - 1].classList.add('sqr_showJudgeIcon');
-        // タグテキストの要素を生成
-        const tagTypo = document.createElement('p');
-        tagTypo.classList.add('sqr_typo_tag');
-        // タグテキストの表示
-        tagTypo.innerText = '正解　あなたの解答';
-        // タグエリアの要素を生成
-        const tagArea = document.createElement('div');
-        tagArea.classList.add('sqr_tagArea');
-        // タグテキストの要素をタグエリアの要素に追加
-        tagArea.appendChild(tagTypo);
-        // タグエリアの要素を選択肢の要素に追加
-        option[(quiz.QuizId - 1) * 4 + (quiz.Answer - 1)].appendChild(tagArea);
-    } else {
-        // 不正解の場合
-        incorrectIcon[quiz.QuizId - 1].classList.add('sqr_showJudgeIcon');
-        // タグテキストの要素を生成
-        const tagTypo2 = document.createElement('p');
-        const tagTypo3 = document.createElement('p');
-        tagTypo2.classList.add('sqr_typo_tag');
-        tagTypo3.classList.add('sqr_typo_tag');
-        // タグテキストの表示
-        tagTypo2.innerText = '正解';
-        tagTypo3.innerText = 'あなたの解答';
-        // タグエリアの要素を生成
-        const tagArea2 = document.createElement('div');
-        const tagArea3 = document.createElement('div');
-        tagArea2.classList.add('sqr_tagArea');
-        tagArea3.classList.add('sqr_tagArea');
-        // タグテキストの要素をタグエリアの要素に追加
-        tagArea2.appendChild(tagTypo2);
-        tagArea3.appendChild(tagTypo3);
-        // タグエリアの要素を正解の選択肢の要素に追加
-        option[(quiz.QuizId - 1) * 4 + (quiz.Answer - 1)].appendChild(tagArea2);
-        option[(quiz.QuizId - 1) * 4 + (record.Choice[quiz.QuizId - 1] - 1)].appendChild(tagArea3);
-    }
-});
+//     // クイズ番号を表示
+//     quizNum[(quiz.QuizId - 1) * 2].innerText = quiz.QuizId;
+//     quizNum[(quiz.QuizId - 1) * 2 + 1].innerText = quiz.QuizId;
+//     // 問題文を表示
+//     statement[quiz.QuizId - 1].innerText = quiz.Question;
+//     // 選択肢テキストを表示
+//     optionText[(quiz.QuizId - 1) * 4].innerText = quiz.Option1;
+//     optionText[(quiz.QuizId - 1) * 4 + 1].innerText = quiz.Option2;
+//     optionText[(quiz.QuizId - 1) * 4 + 2].innerText = quiz.Option3;
+//     optionText[(quiz.QuizId - 1) * 4 + 3].innerText = quiz.Option4;
+//     // 正解選択肢を強調
+//     option[(quiz.QuizId - 1) * 4 + (quiz.Answer - 1)].classList.add('sqr_correctOption');
+//     // 正誤判定
+//     if (record.Choice[quiz.QuizId - 1] == quiz.Answer) {
+//         // 正解の場合
+//         // 正解アイコンの表示
+//         correctIcon[quiz.QuizId - 1].classList.add('sqr_showJudgeIcon');
+//         // タグテキストの要素を生成
+//         const tagTypo = document.createElement('p');
+//         tagTypo.classList.add('sqr_typo_tag');
+//         // タグテキストの表示
+//         tagTypo.innerText = '正解　あなたの解答';
+//         // タグエリアの要素を生成
+//         const tagArea = document.createElement('div');
+//         tagArea.classList.add('sqr_tagArea');
+//         // タグテキストの要素をタグエリアの要素に追加
+//         tagArea.appendChild(tagTypo);
+//         // タグエリアの要素を選択肢の要素に追加
+//         option[(quiz.QuizId - 1) * 4 + (quiz.Answer - 1)].appendChild(tagArea);
+//     } else {
+//         // 不正解の場合
+//         incorrectIcon[quiz.QuizId - 1].classList.add('sqr_showJudgeIcon');
+//         // タグテキストの要素を生成
+//         const tagTypo2 = document.createElement('p');
+//         const tagTypo3 = document.createElement('p');
+//         tagTypo2.classList.add('sqr_typo_tag');
+//         tagTypo3.classList.add('sqr_typo_tag');
+//         // タグテキストの表示
+//         tagTypo2.innerText = '正解';
+//         tagTypo3.innerText = 'あなたの解答';
+//         // タグエリアの要素を生成
+//         const tagArea2 = document.createElement('div');
+//         const tagArea3 = document.createElement('div');
+//         tagArea2.classList.add('sqr_tagArea');
+//         tagArea3.classList.add('sqr_tagArea');
+//         // タグテキストの要素をタグエリアの要素に追加
+//         tagArea2.appendChild(tagTypo2);
+//         tagArea3.appendChild(tagTypo3);
+//         // タグエリアの要素を正解の選択肢の要素に追加
+//         option[(quiz.QuizId - 1) * 4 + (quiz.Answer - 1)].appendChild(tagArea2);
+//         option[(quiz.QuizId - 1) * 4 + (record.Choice[quiz.QuizId - 1] - 1)].appendChild(tagArea3);
+//     }
+// });

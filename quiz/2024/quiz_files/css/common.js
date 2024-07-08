@@ -125,6 +125,7 @@ async function fetchRandomQuizzes(num) {
         // エラーが発生した場合
         window.alert('通信エラーが発生しました。\n電波が良い場所でもう一度ページを開いてください。\n\n解決しない場合は違うデバイスでクイズを解くか、管理者に問い合わせてください。\n\n管理者: meijiyasuda.kizuna@gmail.com\n\nError: Don\'t get quiz data.');
     } finally {
+        // ローダーを非表示
         hideLoader();
     }
 }
@@ -239,6 +240,11 @@ async function logAnswer(data) {
         // エラー画面を表示
         displayErrorScreen(e.message);
     } finally {
+        // フィードバックを表示
+        feedback(parseInt(userData.point));
+        // 解答情報を表示
+        showAnswerInfo();
+        // ローダーを非表示
         hideLoader();
     }
 }
@@ -338,4 +344,72 @@ function displayErrorScreen(errMsg) {
 
     // エラーセクションを表示
     errorSec.classList.remove('com_hiddenFlg');
+}
+
+// フィードバックを表示する関数（引数：得点）
+function feedback(point) {
+    // 要素を取得
+    const fbMsg = document.getElementById('sqr_message'); // フィードバックメッセージ
+    const fbIcon = document.getElementsByClassName('sqr_charactorIcon'); // フィードバックアイコン
+    const numOfCorrects = document.getElementById('sqr_numOfCorrects'); // 正解数
+
+    // 得点によってフィードバックメッセージとアイコンを出し分け
+    if (0 <= point && point < 5) {
+        // 0点以上4点以下の場合
+        fbMsg.innerText = 'もっと頑張ろう！';
+        fbIcon[0].classList.add('sqr_showFbIcon');
+    } else if (5 <= point && point < 8) {
+        // 5点以上7点以下の場合
+        fbMsg.innerText = 'その調子！';
+        fbIcon[1].classList.add('sqr_showFbIcon');
+    } else if (8 <= point && point <= 10) {
+        // 8点以上の場合
+        fbMsg.innerText = 'おめでとう！！';
+        fbIcon[2].classList.add('sqr_showFbIcon');
+    } else {
+        // エラー
+        console.log('Error：得点が範囲外です。');
+        window.alert('Error：得点が範囲外です。');
+    }
+
+    // 正解数を表示
+    numOfCorrects.innerText = point;
+}
+
+// 解答情報を表示する関数
+function showAnswerInfo() {
+    // 要素を取得
+    const quizNum = document.getElementsByClassName('sqr_quizNum'); // クイズ番号
+    const statement = document.getElementsByClassName('sqr_typo_statement'); // 問題文
+    const option = document.getElementsByClassName('sqr_option'); // 選択肢
+    const optionText = document.getElementsByClassName('sqr_typo_optionText'); // 選択肢テキスト
+    const correctIcon = document.getElementsByClassName('sqr_correctIcon'); // 正解アイコン
+    const incorrectIcon = document.getElementsByClassName('sqr_incorrectIcon'); // 不正解アイコン
+    const dialogQuizNum = document.getElementsByClassName('sqr_dialogQuizNum'); // ダイアログ内クイズ番号
+
+    for (let i = 0; i < LIMIT_NUM_OF_QUIZ; i++) {
+        // 問題番号を表示
+        quizNum[i].innerText = i + 1;
+        // 問題文を表示
+        optionText[i].innerText = quizData[i].question;
+        // ダイアログ内問題番号を表示
+        dialogQuizNum[i].innerText = i + 1;
+        
+        for (let j = 0; j < quizData[i].option.length; j++) {
+            // 選択肢テキストを表示
+            optionText[i * quizData[i].option.length + j].innerText = quizData[i].option[j];
+
+            // 正解選択肢を強調
+            if (j == quizData[i].answer - 1) {
+                option[i * quizData[i].option.length + j].classList.add('sqr_correctOption');
+            }
+
+            // 正誤判定
+            if (userData.choice[i] == quizData[i].answer) {
+                // 正解の場合
+            } else {
+                // 不正解の場合
+            }
+        }
+    }
 }

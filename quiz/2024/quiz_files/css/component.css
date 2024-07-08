@@ -249,12 +249,12 @@
 }
 
 /* コンポーネント：ダイアログ */
-.com_dialog {
+.c_dialog {
     display: flex;
 }
 
 /* bodyスクロール制御 */
-.com_dialog_bodyScroll {
+.c_dialog_bodyScroll {
     overflow-y: hidden;
     overflow-x: hidden;
     width: 100%;
@@ -262,12 +262,12 @@
     left: 0;
 }
 
-.com_dialog_showModal {
+.c_dialog_showModal {
     cursor: pointer;
 }
 
 /* ダイアログ背景 */
-.com_dialog_modal {
+.c_dialog_modal {
     visibility: hidden;
     opacity: 0;
     position: fixed;
@@ -285,7 +285,7 @@
     z-index: 10;
 }
 
-.com_dialog_inner {
+.c_dialog_inner {
     background-color: #FFF9E5;
     border-radius: 24px;
     /* スクロールの調整のため右・下paddingをc_modal01_textAreaと分割 */
@@ -301,13 +301,13 @@
 
 /* PC表示 */
 @media (min-width: 760px) {
-    .com_dialog_inner {
+    .c_dialog_inner {
         max-height: 680px;
     }
 }
 
 /* ダイアログテキストエリア */
-.com_dialog_textArea {
+.c_dialog_textArea {
     overflow-y: auto;
     overflow-x: hidden;
     line-height: 1.5;
@@ -317,14 +317,14 @@
 
 /* PC表示 */
 @media (min-width: 760px) {
-    .com_dialog_textArea {
+    .c_dialog_textArea {
         /* ダイアログボックスの最大の高さ（680px）からパディング要素（64px）を引いた値 */
         max-height: 616px;
     }
 }
 
 /* 閉じるアイコン（×ボタン） */
-.com_dialog_CloseBtn {
+.c_dialog_CloseBtn {
     position: absolute;
     right: -16px;
     top: -24px;
@@ -334,17 +334,47 @@
 }
 
 /* ダイアログ表示用クラス */
-.com_dialog_isShow {
+.c_dialog_isShow {
     visibility: visible;
     opacity: 1;
 }
 
 /* ×ボタンクローズ非表示用クラス */
-.com_dialog_hidden_closeBtn .com_dialog_CloseBtn {
+.c_dialog_hidden_closeBtn .c_dialog_CloseBtn {
     display: none;
 }
 
 /* 背景押下制御用クラス */
-.com_dialog .com_dialog_modal_disable {
+.c_dialog .c_dialog_modal_disable {
     cursor: default;
+}
+
+/* テキストリンク */
+.c_textLink {
+    display: flex;
+}
+
+.c_textLink>a {
+    display: flex;
+    align-items: center;
+}
+
+.c_textLink svg {
+    flex-shrink: 0;
+}
+
+.c_textLink_text {
+    padding-left: 4px;
+}
+
+.c_textLink p {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    color: #008673;
+}
+
+.c_textLink>a:hover {
+    background-color: #CCEBE6;
+    transition: all 0.2s ease;
 }
