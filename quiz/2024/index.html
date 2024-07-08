@@ -17,6 +17,13 @@
     <link rel="stylesheet" href="./quiz_files/css/login.css">
     <link rel="stylesheet" href="./quiz_files/css/quiz.css">
     <link rel="stylesheet" href="./quiz_files/css/result.css">
+    <!-- 画面共通CSS（全てのCSS参照の最後に記述） -->
+    <style>
+        /* 非表示フラグ */
+        .com_hiddenFlg {
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -62,8 +69,7 @@
             </form>
             <div class="sql_loginErrorArea com_hiddenFlg">
                 <div class="c_notification c_notification_red">
-                    <div class="c_notification_ttl"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
+                    <div class="c_notification_ttl"><svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <rect x="4" y="4" width="16" height="16" rx="8" fill="#EF0B0B"></rect>
                             <path
                                 d="M11.9945 17C12.5628 17 13 16.5625 13 16C13 15.4271 12.5628 15 11.9945 15C11.4262 15 11 15.4271 11 16C11 16.5625 11.4262 17 11.9945 17Z"
@@ -202,23 +208,19 @@
                                             </p>
                                         </div>
                                         <div class="sqr_tableJudgeArea">
-                                            <div class="sqc_dialog">
-                                                <div class="sqc_dialog_showModal">
+                                            <div class="com_dialog">
+                                                <div class="com_dialog_showModal">
                                                     <div class="sqr_judgementIconUnderbar">
-                                                        <svg version="1.1" class="sqr_correctIcon"
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                            viewBox="0 0 512 512" xml:space="preserve">
+                                                        <svg class="sqr_correctIcon" x="0px" y="0px"
+                                                            viewBox="0 0 512 512">
                                                             <g>
                                                                 <path class="st0" d="M256,0C114.609,0,0,114.625,0,256c0,141.391,114.609,256,256,256c141.375,0,256-114.609,256-256
                     C512,114.625,397.375,0,256,0z M256,464c-114.688,0-208-93.313-208-208S141.313,48,256,48s208,93.313,208,208S370.688,464,256,464z
                     " style="fill: rgb(255, 51, 0);"></path>
                                                             </g>
                                                         </svg>
-                                                        <svg version="1.1" class="sqr_incorrectIcon"
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                            viewBox="0 0 512 512" xml:space="preserve">
+                                                        <svg class="sqr_incorrectIcon" x="0px" y="0px"
+                                                            viewBox="0 0 512 512">
                                                             <g>
                                                                 <polygon class="st0" points="512,52.535 459.467,0.002 256.002,203.462 52.538,0.002 0,52.535 203.47,256.005 0,459.465 
                     52.533,511.998 256.002,308.527 459.467,511.998 512,459.475 308.536,256.005 	"
@@ -228,9 +230,9 @@
                                                         </svg>
                                                     </div>
                                                 </div>
-                                                <div class="sqc_dialog_modal sqc_dialog_modal_disable">
-                                                    <div class="sqc_dialog_inner">
-                                                        <div class="sqc_dialog_CloseBtn">
+                                                <div class="com_dialog_modal com_dialog_modal_disable">
+                                                    <div class="com_dialog_inner">
+                                                        <div class="com_dialog_CloseBtn">
                                                             <svg width="48" height="48" viewbox="0 0 48 48" fill="none">
                                                                 <circle cx="24" cy="24" r="20" fill="#FABF00"></circle>
                                                                 <circle cx="24" cy="24" r="20" fill="#FABF00"></circle>
@@ -242,7 +244,7 @@
                                                                 </path>
                                                             </svg>
                                                         </div>
-                                                        <div class="sqc_dialog_textArea">
+                                                        <div class="com_dialog_textArea">
                                                             <div class="sqr_statementArea">
                                                                 <div class="sqr_numberArea">
                                                                     <p class="sqr_typo_number">
@@ -289,23 +291,19 @@
                                             </p>
                                         </div>
                                         <div class="sqr_tableJudgeArea">
-                                            <div class="sqc_dialog">
-                                                <div class="sqc_dialog_showModal">
+                                            <div class="com_dialog">
+                                                <div class="com_dialog_showModal">
                                                     <div class="sqr_judgementIconUnderbar">
-                                                        <svg version="1.1" class="sqr_correctIcon"
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                            viewBox="0 0 512 512" xml:space="preserve">
+                                                        <svg class="sqr_correctIcon" x="0px" y="0px"
+                                                            viewBox="0 0 512 512">
                                                             <g>
                                                                 <path class="st0" d="M256,0C114.609,0,0,114.625,0,256c0,141.391,114.609,256,256,256c141.375,0,256-114.609,256-256
                     C512,114.625,397.375,0,256,0z M256,464c-114.688,0-208-93.313-208-208S141.313,48,256,48s208,93.313,208,208S370.688,464,256,464z
                     " style="fill: rgb(255, 51, 0);"></path>
                                                             </g>
                                                         </svg>
-                                                        <svg version="1.1" class="sqr_incorrectIcon"
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                            viewBox="0 0 512 512" xml:space="preserve">
+                                                        <svg class="sqr_incorrectIcon" x="0px" y="0px"
+                                                            viewBox="0 0 512 512">
                                                             <g>
                                                                 <polygon class="st0" points="512,52.535 459.467,0.002 256.002,203.462 52.538,0.002 0,52.535 203.47,256.005 0,459.465 
                     52.533,511.998 256.002,308.527 459.467,511.998 512,459.475 308.536,256.005 	"
@@ -315,9 +313,9 @@
                                                         </svg>
                                                     </div>
                                                 </div>
-                                                <div class="sqc_dialog_modal sqc_dialog_modal_disable">
-                                                    <div class="sqc_dialog_inner">
-                                                        <div class="sqc_dialog_CloseBtn">
+                                                <div class="com_dialog_modal com_dialog_modal_disable">
+                                                    <div class="com_dialog_inner">
+                                                        <div class="com_dialog_CloseBtn">
                                                             <svg width="48" height="48" viewbox="0 0 48 48" fill="none">
                                                                 <circle cx="24" cy="24" r="20" fill="#FABF00"></circle>
                                                                 <circle cx="24" cy="24" r="20" fill="#FABF00"></circle>
@@ -329,7 +327,7 @@
                                                                 </path>
                                                             </svg>
                                                         </div>
-                                                        <div class="sqc_dialog_textArea">
+                                                        <div class="com_dialog_textArea">
                                                             <div class="sqr_statementArea">
                                                                 <div class="sqr_numberArea">
                                                                     <p class="sqr_typo_number">
@@ -376,23 +374,19 @@
                                             </p>
                                         </div>
                                         <div class="sqr_tableJudgeArea">
-                                            <div class="sqc_dialog">
-                                                <div class="sqc_dialog_showModal">
+                                            <div class="com_dialog">
+                                                <div class="com_dialog_showModal">
                                                     <div class="sqr_judgementIconUnderbar">
-                                                        <svg version="1.1" class="sqr_correctIcon"
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                            viewBox="0 0 512 512" xml:space="preserve">
+                                                        <svg class="sqr_correctIcon" x="0px" y="0px"
+                                                            viewBox="0 0 512 512">
                                                             <g>
                                                                 <path class="st0" d="M256,0C114.609,0,0,114.625,0,256c0,141.391,114.609,256,256,256c141.375,0,256-114.609,256-256
                     C512,114.625,397.375,0,256,0z M256,464c-114.688,0-208-93.313-208-208S141.313,48,256,48s208,93.313,208,208S370.688,464,256,464z
                     " style="fill: rgb(255, 51, 0);"></path>
                                                             </g>
                                                         </svg>
-                                                        <svg version="1.1" class="sqr_incorrectIcon"
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                            viewBox="0 0 512 512" xml:space="preserve">
+                                                        <svg class="sqr_incorrectIcon" x="0px" y="0px"
+                                                            viewBox="0 0 512 512">
                                                             <g>
                                                                 <polygon class="st0" points="512,52.535 459.467,0.002 256.002,203.462 52.538,0.002 0,52.535 203.47,256.005 0,459.465 
                     52.533,511.998 256.002,308.527 459.467,511.998 512,459.475 308.536,256.005 	"
@@ -402,9 +396,9 @@
                                                         </svg>
                                                     </div>
                                                 </div>
-                                                <div class="sqc_dialog_modal sqc_dialog_modal_disable">
-                                                    <div class="sqc_dialog_inner">
-                                                        <div class="sqc_dialog_CloseBtn">
+                                                <div class="com_dialog_modal com_dialog_modal_disable">
+                                                    <div class="com_dialog_inner">
+                                                        <div class="com_dialog_CloseBtn">
                                                             <svg width="48" height="48" viewbox="0 0 48 48" fill="none">
                                                                 <circle cx="24" cy="24" r="20" fill="#FABF00"></circle>
                                                                 <circle cx="24" cy="24" r="20" fill="#FABF00"></circle>
@@ -416,7 +410,7 @@
                                                                 </path>
                                                             </svg>
                                                         </div>
-                                                        <div class="sqc_dialog_textArea">
+                                                        <div class="com_dialog_textArea">
                                                             <div class="sqr_statementArea">
                                                                 <div class="sqr_numberArea">
                                                                     <p class="sqr_typo_number">
@@ -463,23 +457,19 @@
                                             </p>
                                         </div>
                                         <div class="sqr_tableJudgeArea">
-                                            <div class="sqc_dialog">
-                                                <div class="sqc_dialog_showModal">
+                                            <div class="com_dialog">
+                                                <div class="com_dialog_showModal">
                                                     <div class="sqr_judgementIconUnderbar">
-                                                        <svg version="1.1" class="sqr_correctIcon"
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                            viewBox="0 0 512 512" xml:space="preserve">
+                                                        <svg class="sqr_correctIcon" x="0px" y="0px"
+                                                            viewBox="0 0 512 512">
                                                             <g>
                                                                 <path class="st0" d="M256,0C114.609,0,0,114.625,0,256c0,141.391,114.609,256,256,256c141.375,0,256-114.609,256-256
                     C512,114.625,397.375,0,256,0z M256,464c-114.688,0-208-93.313-208-208S141.313,48,256,48s208,93.313,208,208S370.688,464,256,464z
                     " style="fill: rgb(255, 51, 0);"></path>
                                                             </g>
                                                         </svg>
-                                                        <svg version="1.1" class="sqr_incorrectIcon"
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                            viewBox="0 0 512 512" xml:space="preserve">
+                                                        <svg class="sqr_incorrectIcon" x="0px" y="0px"
+                                                            viewBox="0 0 512 512">
                                                             <g>
                                                                 <polygon class="st0" points="512,52.535 459.467,0.002 256.002,203.462 52.538,0.002 0,52.535 203.47,256.005 0,459.465 
                     52.533,511.998 256.002,308.527 459.467,511.998 512,459.475 308.536,256.005 	"
@@ -489,9 +479,9 @@
                                                         </svg>
                                                     </div>
                                                 </div>
-                                                <div class="sqc_dialog_modal sqc_dialog_modal_disable">
-                                                    <div class="sqc_dialog_inner">
-                                                        <div class="sqc_dialog_CloseBtn">
+                                                <div class="com_dialog_modal com_dialog_modal_disable">
+                                                    <div class="com_dialog_inner">
+                                                        <div class="com_dialog_CloseBtn">
                                                             <svg width="48" height="48" viewbox="0 0 48 48" fill="none">
                                                                 <circle cx="24" cy="24" r="20" fill="#FABF00"></circle>
                                                                 <circle cx="24" cy="24" r="20" fill="#FABF00"></circle>
@@ -503,7 +493,7 @@
                                                                 </path>
                                                             </svg>
                                                         </div>
-                                                        <div class="sqc_dialog_textArea">
+                                                        <div class="com_dialog_textArea">
                                                             <div class="sqr_statementArea">
                                                                 <div class="sqr_numberArea">
                                                                     <p class="sqr_typo_number">
@@ -550,23 +540,19 @@
                                             </p>
                                         </div>
                                         <div class="sqr_tableJudgeArea">
-                                            <div class="sqc_dialog">
-                                                <div class="sqc_dialog_showModal">
+                                            <div class="com_dialog">
+                                                <div class="com_dialog_showModal">
                                                     <div class="sqr_judgementIconUnderbar">
-                                                        <svg version="1.1" class="sqr_correctIcon"
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                            viewBox="0 0 512 512" xml:space="preserve">
+                                                        <svg class="sqr_correctIcon" x="0px" y="0px"
+                                                            viewBox="0 0 512 512">
                                                             <g>
                                                                 <path class="st0" d="M256,0C114.609,0,0,114.625,0,256c0,141.391,114.609,256,256,256c141.375,0,256-114.609,256-256
                     C512,114.625,397.375,0,256,0z M256,464c-114.688,0-208-93.313-208-208S141.313,48,256,48s208,93.313,208,208S370.688,464,256,464z
                     " style="fill: rgb(255, 51, 0);"></path>
                                                             </g>
                                                         </svg>
-                                                        <svg version="1.1" class="sqr_incorrectIcon"
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                            viewBox="0 0 512 512" xml:space="preserve">
+                                                        <svg class="sqr_incorrectIcon" x="0px" y="0px"
+                                                            viewBox="0 0 512 512">
                                                             <g>
                                                                 <polygon class="st0" points="512,52.535 459.467,0.002 256.002,203.462 52.538,0.002 0,52.535 203.47,256.005 0,459.465 
                     52.533,511.998 256.002,308.527 459.467,511.998 512,459.475 308.536,256.005 	"
@@ -576,9 +562,9 @@
                                                         </svg>
                                                     </div>
                                                 </div>
-                                                <div class="sqc_dialog_modal sqc_dialog_modal_disable">
-                                                    <div class="sqc_dialog_inner">
-                                                        <div class="sqc_dialog_CloseBtn">
+                                                <div class="com_dialog_modal com_dialog_modal_disable">
+                                                    <div class="com_dialog_inner">
+                                                        <div class="com_dialog_CloseBtn">
                                                             <svg width="48" height="48" viewbox="0 0 48 48" fill="none">
                                                                 <circle cx="24" cy="24" r="20" fill="#FABF00"></circle>
                                                                 <circle cx="24" cy="24" r="20" fill="#FABF00"></circle>
@@ -590,7 +576,7 @@
                                                                 </path>
                                                             </svg>
                                                         </div>
-                                                        <div class="sqc_dialog_textArea">
+                                                        <div class="com_dialog_textArea">
                                                             <div class="sqr_statementArea">
                                                                 <div class="sqr_numberArea">
                                                                     <p class="sqr_typo_number">
@@ -639,23 +625,19 @@
                                             </p>
                                         </div>
                                         <div class="sqr_tableJudgeArea">
-                                            <div class="sqc_dialog">
-                                                <div class="sqc_dialog_showModal">
+                                            <div class="com_dialog">
+                                                <div class="com_dialog_showModal">
                                                     <div class="sqr_judgementIconUnderbar">
-                                                        <svg version="1.1" class="sqr_correctIcon"
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                            viewBox="0 0 512 512" xml:space="preserve">
+                                                        <svg class="sqr_correctIcon" x="0px" y="0px"
+                                                            viewBox="0 0 512 512">
                                                             <g>
                                                                 <path class="st0" d="M256,0C114.609,0,0,114.625,0,256c0,141.391,114.609,256,256,256c141.375,0,256-114.609,256-256
                     C512,114.625,397.375,0,256,0z M256,464c-114.688,0-208-93.313-208-208S141.313,48,256,48s208,93.313,208,208S370.688,464,256,464z
                     " style="fill: rgb(255, 51, 0);"></path>
                                                             </g>
                                                         </svg>
-                                                        <svg version="1.1" class="sqr_incorrectIcon"
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                            viewBox="0 0 512 512" xml:space="preserve">
+                                                        <svg class="sqr_incorrectIcon" x="0px" y="0px"
+                                                            viewBox="0 0 512 512">
                                                             <g>
                                                                 <polygon class="st0" points="512,52.535 459.467,0.002 256.002,203.462 52.538,0.002 0,52.535 203.47,256.005 0,459.465 
                     52.533,511.998 256.002,308.527 459.467,511.998 512,459.475 308.536,256.005 	"
@@ -665,9 +647,9 @@
                                                         </svg>
                                                     </div>
                                                 </div>
-                                                <div class="sqc_dialog_modal sqc_dialog_modal_disable">
-                                                    <div class="sqc_dialog_inner">
-                                                        <div class="sqc_dialog_CloseBtn">
+                                                <div class="com_dialog_modal com_dialog_modal_disable">
+                                                    <div class="com_dialog_inner">
+                                                        <div class="com_dialog_CloseBtn">
                                                             <svg width="48" height="48" viewbox="0 0 48 48" fill="none">
                                                                 <circle cx="24" cy="24" r="20" fill="#FABF00"></circle>
                                                                 <circle cx="24" cy="24" r="20" fill="#FABF00"></circle>
@@ -679,7 +661,7 @@
                                                                 </path>
                                                             </svg>
                                                         </div>
-                                                        <div class="sqc_dialog_textArea">
+                                                        <div class="com_dialog_textArea">
                                                             <div class="sqr_statementArea">
                                                                 <div class="sqr_numberArea">
                                                                     <p class="sqr_typo_number">
@@ -726,23 +708,19 @@
                                             </p>
                                         </div>
                                         <div class="sqr_tableJudgeArea">
-                                            <div class="sqc_dialog">
-                                                <div class="sqc_dialog_showModal">
+                                            <div class="com_dialog">
+                                                <div class="com_dialog_showModal">
                                                     <div class="sqr_judgementIconUnderbar">
-                                                        <svg version="1.1" class="sqr_correctIcon"
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                            viewBox="0 0 512 512" xml:space="preserve">
+                                                        <svg class="sqr_correctIcon" x="0px" y="0px"
+                                                            viewBox="0 0 512 512">
                                                             <g>
                                                                 <path class="st0" d="M256,0C114.609,0,0,114.625,0,256c0,141.391,114.609,256,256,256c141.375,0,256-114.609,256-256
                     C512,114.625,397.375,0,256,0z M256,464c-114.688,0-208-93.313-208-208S141.313,48,256,48s208,93.313,208,208S370.688,464,256,464z
                     " style="fill: rgb(255, 51, 0);"></path>
                                                             </g>
                                                         </svg>
-                                                        <svg version="1.1" class="sqr_incorrectIcon"
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                            viewBox="0 0 512 512" xml:space="preserve">
+                                                        <svg class="sqr_incorrectIcon" x="0px" y="0px"
+                                                            viewBox="0 0 512 512">
                                                             <g>
                                                                 <polygon class="st0" points="512,52.535 459.467,0.002 256.002,203.462 52.538,0.002 0,52.535 203.47,256.005 0,459.465 
                     52.533,511.998 256.002,308.527 459.467,511.998 512,459.475 308.536,256.005 	"
@@ -752,9 +730,9 @@
                                                         </svg>
                                                     </div>
                                                 </div>
-                                                <div class="sqc_dialog_modal sqc_dialog_modal_disable">
-                                                    <div class="sqc_dialog_inner">
-                                                        <div class="sqc_dialog_CloseBtn">
+                                                <div class="com_dialog_modal com_dialog_modal_disable">
+                                                    <div class="com_dialog_inner">
+                                                        <div class="com_dialog_CloseBtn">
                                                             <svg width="48" height="48" viewbox="0 0 48 48" fill="none">
                                                                 <circle cx="24" cy="24" r="20" fill="#FABF00"></circle>
                                                                 <circle cx="24" cy="24" r="20" fill="#FABF00"></circle>
@@ -766,7 +744,7 @@
                                                                 </path>
                                                             </svg>
                                                         </div>
-                                                        <div class="sqc_dialog_textArea">
+                                                        <div class="com_dialog_textArea">
                                                             <div class="sqr_statementArea">
                                                                 <div class="sqr_numberArea">
                                                                     <p class="sqr_typo_number">
@@ -813,23 +791,19 @@
                                             </p>
                                         </div>
                                         <div class="sqr_tableJudgeArea">
-                                            <div class="sqc_dialog">
-                                                <div class="sqc_dialog_showModal">
+                                            <div class="com_dialog">
+                                                <div class="com_dialog_showModal">
                                                     <div class="sqr_judgementIconUnderbar">
-                                                        <svg version="1.1" class="sqr_correctIcon"
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                            viewBox="0 0 512 512" xml:space="preserve">
+                                                        <svg class="sqr_correctIcon" x="0px" y="0px"
+                                                            viewBox="0 0 512 512">
                                                             <g>
                                                                 <path class="st0" d="M256,0C114.609,0,0,114.625,0,256c0,141.391,114.609,256,256,256c141.375,0,256-114.609,256-256
                     C512,114.625,397.375,0,256,0z M256,464c-114.688,0-208-93.313-208-208S141.313,48,256,48s208,93.313,208,208S370.688,464,256,464z
                     " style="fill: rgb(255, 51, 0);"></path>
                                                             </g>
                                                         </svg>
-                                                        <svg version="1.1" class="sqr_incorrectIcon"
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                            viewBox="0 0 512 512" xml:space="preserve">
+                                                        <svg class="sqr_incorrectIcon" x="0px" y="0px"
+                                                            viewBox="0 0 512 512">
                                                             <g>
                                                                 <polygon class="st0" points="512,52.535 459.467,0.002 256.002,203.462 52.538,0.002 0,52.535 203.47,256.005 0,459.465 
                     52.533,511.998 256.002,308.527 459.467,511.998 512,459.475 308.536,256.005 	"
@@ -839,9 +813,9 @@
                                                         </svg>
                                                     </div>
                                                 </div>
-                                                <div class="sqc_dialog_modal sqc_dialog_modal_disable">
-                                                    <div class="sqc_dialog_inner">
-                                                        <div class="sqc_dialog_CloseBtn">
+                                                <div class="com_dialog_modal com_dialog_modal_disable">
+                                                    <div class="com_dialog_inner">
+                                                        <div class="com_dialog_CloseBtn">
                                                             <svg width="48" height="48" viewbox="0 0 48 48" fill="none">
                                                                 <circle cx="24" cy="24" r="20" fill="#FABF00"></circle>
                                                                 <circle cx="24" cy="24" r="20" fill="#FABF00"></circle>
@@ -853,7 +827,7 @@
                                                                 </path>
                                                             </svg>
                                                         </div>
-                                                        <div class="sqc_dialog_textArea">
+                                                        <div class="com_dialog_textArea">
                                                             <div class="sqr_statementArea">
                                                                 <div class="sqr_numberArea">
                                                                     <p class="sqr_typo_number">
@@ -900,23 +874,19 @@
                                             </p>
                                         </div>
                                         <div class="sqr_tableJudgeArea">
-                                            <div class="sqc_dialog">
-                                                <div class="sqc_dialog_showModal">
+                                            <div class="com_dialog">
+                                                <div class="com_dialog_showModal">
                                                     <div class="sqr_judgementIconUnderbar">
-                                                        <svg version="1.1" class="sqr_correctIcon"
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                            viewBox="0 0 512 512" xml:space="preserve">
+                                                        <svg class="sqr_correctIcon" x="0px" y="0px"
+                                                            viewBox="0 0 512 512">
                                                             <g>
                                                                 <path class="st0" d="M256,0C114.609,0,0,114.625,0,256c0,141.391,114.609,256,256,256c141.375,0,256-114.609,256-256
                     C512,114.625,397.375,0,256,0z M256,464c-114.688,0-208-93.313-208-208S141.313,48,256,48s208,93.313,208,208S370.688,464,256,464z
                     " style="fill: rgb(255, 51, 0);"></path>
                                                             </g>
                                                         </svg>
-                                                        <svg version="1.1" class="sqr_incorrectIcon"
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                            viewBox="0 0 512 512" xml:space="preserve">
+                                                        <svg class="sqr_incorrectIcon" x="0px" y="0px"
+                                                            viewBox="0 0 512 512">
                                                             <g>
                                                                 <polygon class="st0" points="512,52.535 459.467,0.002 256.002,203.462 52.538,0.002 0,52.535 203.47,256.005 0,459.465 
                     52.533,511.998 256.002,308.527 459.467,511.998 512,459.475 308.536,256.005 	"
@@ -926,9 +896,9 @@
                                                         </svg>
                                                     </div>
                                                 </div>
-                                                <div class="sqc_dialog_modal sqc_dialog_modal_disable">
-                                                    <div class="sqc_dialog_inner">
-                                                        <div class="sqc_dialog_CloseBtn">
+                                                <div class="com_dialog_modal com_dialog_modal_disable">
+                                                    <div class="com_dialog_inner">
+                                                        <div class="com_dialog_CloseBtn">
                                                             <svg width="48" height="48" viewbox="0 0 48 48" fill="none">
                                                                 <circle cx="24" cy="24" r="20" fill="#FABF00"></circle>
                                                                 <circle cx="24" cy="24" r="20" fill="#FABF00"></circle>
@@ -940,7 +910,7 @@
                                                                 </path>
                                                             </svg>
                                                         </div>
-                                                        <div class="sqc_dialog_textArea">
+                                                        <div class="com_dialog_textArea">
                                                             <div class="sqr_statementArea">
                                                                 <div class="sqr_numberArea">
                                                                     <p class="sqr_typo_number">
@@ -987,23 +957,19 @@
                                             </p>
                                         </div>
                                         <div class="sqr_tableJudgeArea">
-                                            <div class="sqc_dialog">
-                                                <div class="sqc_dialog_showModal">
+                                            <div class="com_dialog">
+                                                <div class="com_dialog_showModal">
                                                     <div class="sqr_judgementIconUnderbar">
-                                                        <svg version="1.1" class="sqr_correctIcon"
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                            viewBox="0 0 512 512" xml:space="preserve">
+                                                        <svg class="sqr_correctIcon" x="0px" y="0px"
+                                                            viewBox="0 0 512 512">
                                                             <g>
                                                                 <path class="st0" d="M256,0C114.609,0,0,114.625,0,256c0,141.391,114.609,256,256,256c141.375,0,256-114.609,256-256
                     C512,114.625,397.375,0,256,0z M256,464c-114.688,0-208-93.313-208-208S141.313,48,256,48s208,93.313,208,208S370.688,464,256,464z
                     " style="fill: rgb(255, 51, 0);"></path>
                                                             </g>
                                                         </svg>
-                                                        <svg version="1.1" class="sqr_incorrectIcon"
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                            viewBox="0 0 512 512" xml:space="preserve">
+                                                        <svg class="sqr_incorrectIcon" x="0px" y="0px"
+                                                            viewBox="0 0 512 512">
                                                             <g>
                                                                 <polygon class="st0" points="512,52.535 459.467,0.002 256.002,203.462 52.538,0.002 0,52.535 203.47,256.005 0,459.465 
                     52.533,511.998 256.002,308.527 459.467,511.998 512,459.475 308.536,256.005 	"
@@ -1013,9 +979,9 @@
                                                         </svg>
                                                     </div>
                                                 </div>
-                                                <div class="sqc_dialog_modal sqc_dialog_modal_disable">
-                                                    <div class="sqc_dialog_inner">
-                                                        <div class="sqc_dialog_CloseBtn">
+                                                <div class="com_dialog_modal com_dialog_modal_disable">
+                                                    <div class="com_dialog_inner">
+                                                        <div class="com_dialog_CloseBtn">
                                                             <svg width="48" height="48" viewbox="0 0 48 48" fill="none">
                                                                 <circle cx="24" cy="24" r="20" fill="#FABF00"></circle>
                                                                 <circle cx="24" cy="24" r="20" fill="#FABF00"></circle>
@@ -1027,7 +993,7 @@
                                                                 </path>
                                                             </svg>
                                                         </div>
-                                                        <div class="sqc_dialog_textArea">
+                                                        <div class="com_dialog_textArea">
                                                             <div class="sqr_statementArea">
                                                                 <div class="sqr_numberArea">
                                                                     <p class="sqr_typo_number">

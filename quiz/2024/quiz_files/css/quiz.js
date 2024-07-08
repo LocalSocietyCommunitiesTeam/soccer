@@ -164,7 +164,7 @@ function updateQuiz(currentQuizNum) {
 //     // 選択肢エリアの要素を取得
 //     const choiceArea = document.getElementsByClassName('sqq_choiceArea')[0];
 //     // プログレスバーの円の要素を取得
-//     const progressCircle = document.getElementsByClassName('sqc_progressBar_circle');
+//     const progressCircle = document.getElementsByClassName('com_progressBar_circle');
 
 //     // 現在の問題番号を定義
 //     let quizNum = 1;
@@ -283,8 +283,8 @@ function updateQuiz(currentQuizNum) {
 //                                 select[selectValue - 1].classList.remove('sqq_optionGray');
 
 //                                 //スクロールバーを進める
-//                                 progressCircle[quizNum - 2].classList.remove('sqc_progressBar_active');
-//                                 progressCircle[quizNum - 1].classList.add('sqc_progressBar_active');
+//                                 progressCircle[quizNum - 2].classList.remove('com_progressBar_active');
+//                                 progressCircle[quizNum - 1].classList.add('com_progressBar_active');
 
 //                                 // クイズ情報を表示
 //                                 QuizId.innerText = quizNum;

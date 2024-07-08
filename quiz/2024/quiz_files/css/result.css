@@ -1,7 +1,6 @@
 /** 結果画面CSS **/
-.sqr_whiteCover {
-    padding: 16px;
-    background-color: rgba(255, 255, 255, 0.4);
+.sqr_resultSec {
+    padding: 24px 20px;
 }
 
 .spr_typo_message {
@@ -21,7 +20,7 @@
     margin: 0 auto;
 }
 
-.sqr_iconArea>.sqr_showMascotIcon {
+.sqr_iconArea>.sqr_showFbIcon {
     display: block;
 }
 
@@ -200,20 +199,6 @@
 
 .sqr_rankTextSpace {
     padding-left: 8px;
-}
-
-.sql_typo_rankText {
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 20px;
-    color: #2E2E2E;
-}
-
-.sql_typo_rankNum {
-    font-size: 24px;
-    font-weight: 700;
-    line-height: 32px;
-    color: #2E2E2E;
 }
 
 /* ノーティフィケーションエリア */

@@ -247,3 +247,104 @@
 .c_progressbar_active~.c_progressbar_bar+.c_progressbar_circle {
     background-color: #D5D5D5;
 }
+
+/* コンポーネント：ダイアログ */
+.com_dialog {
+    display: flex;
+}
+
+/* bodyスクロール制御 */
+.com_dialog_bodyScroll {
+    overflow-y: hidden;
+    overflow-x: hidden;
+    width: 100%;
+    position: fixed;
+    left: 0;
+}
+
+.com_dialog_showModal {
+    cursor: pointer;
+}
+
+/* ダイアログ背景 */
+.com_dialog_modal {
+    visibility: hidden;
+    opacity: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s cubic-bezier(0, 0.2, 0.4, 1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    background-color: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    z-index: 10;
+}
+
+.com_dialog_inner {
+    background-color: #FFF9E5;
+    border-radius: 24px;
+    /* スクロールの調整のため右・下paddingをc_modal01_textAreaと分割 */
+    padding: 32px 12px 30px 0;
+    width: 90vw;
+    max-width: 592px;
+    min-width: 328px;
+    max-height: 90%;
+    position: relative;
+    cursor: default;
+    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* PC表示 */
+@media (min-width: 760px) {
+    .com_dialog_inner {
+        max-height: 680px;
+    }
+}
+
+/* ダイアログテキストエリア */
+.com_dialog_textArea {
+    overflow-y: auto;
+    overflow-x: hidden;
+    line-height: 1.5;
+    /*モーダル内スクロールの調整のため右・下paddingをc_modal01_innerと分割 */
+    padding: 0 12px 2px 24px;
+}
+
+/* PC表示 */
+@media (min-width: 760px) {
+    .com_dialog_textArea {
+        /* ダイアログボックスの最大の高さ（680px）からパディング要素（64px）を引いた値 */
+        max-height: 616px;
+    }
+}
+
+/* 閉じるアイコン（×ボタン） */
+.com_dialog_CloseBtn {
+    position: absolute;
+    right: -16px;
+    top: -24px;
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+}
+
+/* ダイアログ表示用クラス */
+.com_dialog_isShow {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* ×ボタンクローズ非表示用クラス */
+.com_dialog_hidden_closeBtn .com_dialog_CloseBtn {
+    display: none;
+}
+
+/* 背景押下制御用クラス */
+.com_dialog .com_dialog_modal_disable {
+    cursor: default;
+}

@@ -340,7 +340,7 @@ function getUUID() {
 }
 
 // UUIDをローカルストレージに保存する関数
-function saveUuidToLocalStorage() {
+function setUuid() {
     // ローカルストレージから保存済みのUUIDを取得
     const storedUuid = getUUID();
 

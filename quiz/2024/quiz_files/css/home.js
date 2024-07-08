@@ -1,9 +1,9 @@
 /** ホーム画面JavaScript **/
 // 10問のランダムなクイズを取得
-fetchRandomQuizzes(10);
+fetchRandomQuizzes(LIMIT_NUM_OF_QUIZ);
 
-// ローカルストレージにUUIDを保存し、`setUuid` 関数に渡す
-saveUuidToLocalStorage();
+// UUIDを設定
+setUuid();
 
 window.addEventListener('DOMContentLoaded', function () {
     // 要素を取得

@@ -1,15 +1,18 @@
 /** 共通JavaScript **/
+// クイズ上限数
+var LIMIT_NUM_OF_QUIZ = 10;
+
 // クイズデータ
 var quizData;
 
 // ユーザーデータ
 var userData = {
-    uuid: null,
-    userName: null,
-    loginDate: null,
-    answerDate: null,
-    choice: [],
-    point: 0
+    "uuid": null,
+    "userName": null,
+    "loginDate": null,
+    "answerDate": null,
+    "choice": [],
+    "point": 0
 };
 
 // ログデータ
@@ -258,31 +261,22 @@ function addParametersToURL(url, params) {
     return urlObj.toString();
 }
 
-// UUIDをローカルストレージに保存し、`setUuid` 関数に渡す関数
-function saveUuidToLocalStorage() {
-    // ローカルストレージから保存済みのUUIDを取得
-    const storedUuid = localStorage.getItem('uuid');
+// UUID を設定する関数
+function setUuid() {
+    let uuid;
 
-    // 保存済みのUUIDがない場合
-    if (!storedUuid) {
-        // `crypto.randomUUID()` で新しいUUIDを生成
-        const uuid = crypto.randomUUID();
-
-        // ローカルストレージに 'uuid' キーで新しいUUIDを保存
+    // ローカルストレージから UUID を取得
+    try {
+        uuid = localStorage.getItem('uuid');
+    } catch {
+        // ローカルストレージから UUID を取得できない場合は、新しい UUID を生成
+        uuid = crypto.randomUUID();
+        // 生成した UUID をローカルストレージに保存
         localStorage.setItem('uuid', uuid);
-
-        // 生成したUUIDを `setUuid` 関数に渡す
-        setUuid(uuid);
-    } else {
-        // 保存済みのUUIDを `setUuid` 関数に渡す
-        setUuid(storedUuid);
+    } finally {
+        // userData オブジェクトに UUID を設定
+        userData.uuid = uuid;
     }
-}
-
-// UUIDを `userData` オブジェクトに設定する関数
-function setUuid(uuid) {
-    // `userData` オブジェクトにUUIDを設定
-    userData.uuid = uuid;
 }
 
 // DOMContentLoadedイベントにイベントリスナーを登録
@@ -301,9 +295,6 @@ function addHiddenClassAtEndOfHeadTag() {
 
     // style要素を作成
     const style = document.createElement('style');
-
-    // style要素にCSSコードを設定
-    style.innerHTML = '.com_hiddenFlg { display: none; }';
 
     // head要素にコメントノードを追加
     head.appendChild(comment);
