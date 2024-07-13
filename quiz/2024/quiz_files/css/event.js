@@ -87,6 +87,12 @@ if (!document.getElementsByClassName('c_dialog').length) {
             closeBtn[i].addEventListener('click', function () {
                 closeModalDialog01(this.parentElement.parentElement);
             });
+
+            closeBtn[i].addEventListener('keydown', function (e) {
+                if (e.key === 'Enter') {
+                    closeModalDialog01(this.parentElement.parentElement);
+                }
+            });
         }
 
         // ダイアログウィンドウの非表示制御（背景押下時）

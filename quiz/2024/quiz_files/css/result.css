@@ -3,6 +3,15 @@
     padding: 24px 20px;
 }
 
+@media (min-width: 760px) {
+    .sqr_resultSec {
+        padding: 64px 0;
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+}
+
 .spr_typo_message {
     font-size: 20px;
     font-weight: 700;
@@ -17,7 +26,7 @@
 
 .sqr_iconArea>img {
     display: none;
-    width: 100px;
+    height: 96px;
     margin: 0 auto;
 }
 
@@ -111,7 +120,7 @@
     border-top: 2px solid #FABF00;
 }
 
-.sqr_quizJudgeCell>* {
+.sqr_quizJudgeCell>a {
     width: 24px;
     height: 24px;
     border-bottom: 1px solid #2E2E2E;

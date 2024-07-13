@@ -600,16 +600,22 @@ function showAnswerInfo() {
         // 〇×を表示
         showJudgeIcon();
 
-        for (let j = 0; j < quizJudgeCell[i].children.length; j++) {
-            quizJudgeCell[i].children.item(j).addEventListener('click', function () {
-                // ダイアログ内の結果を初期化
-                resetResult();
-                // ダイアログ内の結果をセット
-                setResult(this);
-                // 結果ダイアログを表示
-                showModalDialog01(resultDialog.getElementsByClassName('c_dialog_modal')[0]);
-            });
-        }
+        // 〇×アイコン押下時の処理
+        quizJudgeCell[i].firstElementChild.addEventListener('click', function () {
+            // ダイアログ内の結果を初期化
+            resetResult();
+            // ダイアログ内の結果をセット
+            setResult(this);
+            // 結果ダイアログを表示
+            showModalDialog01(resultDialog.getElementsByClassName('c_dialog_modal')[0]);
+        });
+
+        // 〇×アイコンEnter時の処理
+        quizJudgeCell[i].firstElementChild.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') {
+                this.click();
+            }
+        });
     }
 }
 
