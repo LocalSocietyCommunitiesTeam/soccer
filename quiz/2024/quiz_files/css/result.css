@@ -7,21 +7,26 @@
     font-size: 20px;
     font-weight: 700;
     line-height: 28px;
-    color: #2E2E2E;
+    color: #FFFFFF;
     text-align: center;
 }
 
 .sqr_iconArea {
-    height: 100px;
+    padding-top: 8px;
 }
 
 .sqr_iconArea>img {
     display: none;
+    width: 100px;
     margin: 0 auto;
 }
 
 .sqr_iconArea>.sqr_showFbIcon {
     display: block;
+}
+
+.sqr_judgmentArea {
+    padding-top: 24px;
 }
 
 .sqr_tableFrame {
@@ -44,32 +49,47 @@
     padding-top: 16px;
 }
 
-.sqr_judgementTable {
-    display: flex;
+.sqr_adviceArea {
+    padding-top: 16px;
+}
+
+.sqr_typo_advice {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #2E2E2E;
+}
+
+/* 結果テーブル */
+.sqr_resultTable {
     border-radius: 16px;
     overflow: hidden;
 }
 
-.sqr_judgementTable>ul {
-    flex-grow: 1;
-}
-
-.sqr_judgementTable li {
+.sqr_resultTable>li {
     display: flex;
 }
 
-.sqr_judgementTable li>div {
+.sqr_quizCell {
+    display: flex;
     flex-grow: 1;
+    flex-basis: 0;
+}
+
+.sqr_quizNumCell,
+.sqr_quizJudgeCell {
+    display: flex;
+    justify-content: center;
     width: 50%;
 }
 
-.sqr_tableNumArea {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.sqr_quizNumCell {
     padding: 8px;
-    border-right: 2px solid #FABF00;
     background-color: #FCDF7F;
+}
+
+.sqr_quizCell:nth-child(even)>.sqr_quizNumCell {
+    border-left: 2px solid #FABF00;
 }
 
 .sqr_typo_tableNum {
@@ -79,37 +99,26 @@
     color: #2E2E2E;
 }
 
-.sqr_tableJudgeArea {
+.sqr_quizJudgeCell {
     display: flex;
-    justify-content: center;
     align-items: center;
+    border-left: 2px solid #FABF00;
     background-color: #FEF2CC;
 }
 
-.sqr_judgementTable>ul:first-child .sqr_tableJudgeArea {
-    border-right: 2px solid #FABF00;
-}
-
-.sqr_judgementTable>ul>li:not(:first-child) {
+.sqr_resultTable>li:not(:first-child) .sqr_quizNumCell,
+.sqr_resultTable>li:not(:first-child) .sqr_quizJudgeCell {
     border-top: 2px solid #FABF00;
 }
 
-.sqr_judgementIconUnderbar {
-    padding: 4px;
-    border-bottom: 1px solid #585858;
+.sqr_quizJudgeCell>* {
+    width: 24px;
+    height: 24px;
+    border-bottom: 1px solid #2E2E2E;
+    cursor: pointer;
 }
 
-.sqr_correctIcon, .sqr_incorrectIcon {
-    display: none;
-    width: 16px;
-    height: 16px;
-}
-
-.sqr_showJudgeIcon {
-    display: block;
-}
-
-/* ダイアログ内の要素 */
+/* 結果ダイアログ内 */
 .sqr_statementArea {
     display: flex;
     border-radius: 10px;
@@ -187,28 +196,4 @@
     font-weight: 700;
     line-height: 16px;
     color: #F23737;
-}
-
-/* ランキングエリア */
-.sqr_rankingArea {
-    display: flex;
-    justify-content: center;
-    align-items: baseline;
-    padding-top: 16px;
-}
-
-.sqr_rankTextSpace {
-    padding-left: 8px;
-}
-
-/* ノーティフィケーションエリア */
-.sqr_adviceArea {
-    padding-top: 16px;
-}
-
-.sqr_typo_advice {
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 24px;
-    color: #2E2E2E;
 }
