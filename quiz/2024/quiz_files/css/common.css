@@ -96,7 +96,7 @@ section {
 /* エラーセクション */
 .com_errorSec {
     padding: 48px 20px;
-    background-color: #00A08E;
+    background-color: #FFE0E0;
 }
 
 .com_errImg {
@@ -105,7 +105,19 @@ section {
 }
 
 .com_errImg>img {
-    width: 64%;
+    height: 200px;
+}
+
+.com_errTtl {
+    padding-top: 24px;
+}
+
+.com_errTtl>p {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 36px;
+    color: #2E2E2E;
+    text-align: center;
 }
 
 .com_errLead {

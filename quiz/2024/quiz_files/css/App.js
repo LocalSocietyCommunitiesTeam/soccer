@@ -226,8 +226,8 @@ function showErrorSec(errMsg) {
     const header = document.getElementsByTagName('header')[0]; // ヘッダー
     const footer = document.getElementsByTagName('footer')[0]; // フッター
     const sec = document.getElementsByClassName('com_screenSec'); // 画面セクション
+    const errLeadText = document.getElementById('com_errLeadText'); // エラーメッセージ
     const errorSec = document.getElementsByClassName('com_errorSec')[0]; // エラーセクション
-
 
     // ヘッダー・フッターを非表示
     header.classList.add('com_hiddenFlg');
@@ -239,6 +239,9 @@ function showErrorSec(errMsg) {
             sec[i].classList.add('com_hiddenFlg');
         }
     }
+
+    // エラーメッセージをセット
+    errLeadText.innerText = errMsg;
 
     // エラーセクションを表示
     errorSec.classList.remove('com_hiddenFlg');
@@ -255,13 +258,19 @@ function setUuid() {
     try {
         uuid = JSON.parse(localStorage.getItem('userData')).uuid;
     } catch {
+        showErrorSec(errMsg[1]);
         // ローカルストレージから UUID を取得できない場合は、新しい UUID を生成
         uuid = crypto.randomUUID();
     } finally {
         // userData オブジェクトに UUID を設定
         userData.uuid = uuid;
-        // 生成した UUID をローカルストレージに保存
-        localStorage.setItem('userData', JSON.stringify(userData));
+
+        try {
+            // 生成した UUID をローカルストレージに保存
+            localStorage.setItem('userData', JSON.stringify(userData));
+        } catch {
+            showErrorSec(errMsg[2]);
+        }
     }
 }
 
