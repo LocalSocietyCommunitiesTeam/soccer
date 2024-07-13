@@ -93,9 +93,44 @@
 /* ノーティフィケーション */
 .c_notification {
     padding: 8px;
-    border: 1px solid #EA3D3D;
     border-radius: 16px;
+}
+
+.c_notification_red {
+    border: 1px solid #EA3D3D;
     background-color: #FFE0E0;
+}
+
+.c_notification_ttl {
+    display: flex;
+    align-items: center;
+}
+
+.c_notification_ttl>svg {
+    flex-shrink: 0;
+}
+
+.c_notification_ttlText {
+    flex-grow: 1;
+    padding-left: 4px;
+}
+
+.c_notification_ttlText>p {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    color: #2E2E2E;
+}
+
+.c_notification_contentText {
+    padding-top: 8px;
+}
+
+.c_notification_contentText>p {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #2E2E2E;
 }
 
 /* テキストフィールド */

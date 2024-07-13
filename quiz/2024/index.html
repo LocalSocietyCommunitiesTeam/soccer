@@ -67,18 +67,22 @@
                         </a></div>
                 </div>
             </form>
-            <div class="sql_loginErrorArea com_hiddenFlg">
+            <div class="sql_loginErrorArea sql_loginErrorHidden">
                 <div class="c_notification c_notification_red">
-                    <div class="c_notification_ttl"><svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <rect x="4" y="4" width="16" height="16" rx="8" fill="#EF0B0B"></rect>
+                    <div class="c_notification_ttl"><svg width="24" height="24" viewbox="0 0 24 24" fill="none" focusable="false">
                             <path
-                                d="M11.9945 17C12.5628 17 13 16.5625 13 16C13 15.4271 12.5628 15 11.9945 15C11.4262 15 11 15.4271 11 16C11 16.5625 11.4262 17 11.9945 17Z"
-                                fill="FFFFFF"></path>
-                            <path
-                                d="M12.9324 8.91535L12.6848 13.3524C12.6645 13.7157 12.3639 14 12 14C11.6361 14 11.3355 13.7157 11.3152 13.3524L11.0676 8.91535L11.0353 7.99938C11.016 7.45323 11.4535 7 12 7C12.5465 7 12.984 7.45323 12.9647 7.99938L12.9324 8.91535Z"
-                                fill="FFFFFF"></path>
+                                d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z"
+                                fill="#E53935"></path>
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M11.9998 14.25C11.5598 14.25 11.0698 13.96 11.0298 13.34V13.35L10.7298 8.00999L10.6898 6.89999C10.6798 6.37999 10.8998 5.96999 11.2998 5.73999C11.7298 5.48999 12.2798 5.48999 12.6998 5.73999C13.0998 5.96999 13.3098 6.37999 13.3098 6.88999L13.2698 7.99999L12.9698 13.34C12.9298 13.97 12.4398 14.25 11.9998 14.25ZM10.6504 17.08C10.6504 16.34 11.2604 15.73 12.0004 15.73C12.7404 15.73 13.3504 16.34 13.3504 17.08C13.3504 17.82 12.7404 18.43 12.0004 18.43C11.2604 18.43 10.6504 17.82 10.6504 17.08Z"
+                                fill="white"></path>
                         </svg>
-                        <p>エラー文言</p>
+                        <div class="c_notification_ttlText">
+                            <p>ログインエラー</p>
+                        </div>
+                    </div>
+                    <div class="c_notification_contentText">
+                        <p id="sql_loginErrMsg">エラー内容</p>
                     </div>
                 </div>
             </div>
@@ -208,8 +212,8 @@
                                             </p>
                                         </div>
                                         <div class="sqr_quizJudgeCell">
-                                            <svg class="sqr_correctIcon com_hiddenFlg" width="24" height="24" viewBox="0 0 24 24"
-                                                fill="none" tabindex="0">
+                                            <svg class="sqr_correctIcon com_hiddenFlg" width="24" height="24"
+                                                viewBox="0 0 24 24" fill="none" tabindex="0">
                                                 <circle cx="12" cy="12" r="9" stroke="#FF3300" stroke-width="2" />
                                             </svg>
                                             <svg class="sqr_incorrectIcon com_hiddenFlg" width="24" height="24"
@@ -227,8 +231,8 @@
                                             </p>
                                         </div>
                                         <div class="sqr_quizJudgeCell">
-                                            <svg class="sqr_correctIcon com_hiddenFlg" width="24" height="24" viewBox="0 0 24 24"
-                                                fill="none" tabindex="0">
+                                            <svg class="sqr_correctIcon com_hiddenFlg" width="24" height="24"
+                                                viewBox="0 0 24 24" fill="none" tabindex="0">
                                                 <circle cx="12" cy="12" r="9" stroke="#FF3300" stroke-width="2" />
                                             </svg>
                                             <svg class="sqr_incorrectIcon com_hiddenFlg" width="24" height="24"
@@ -248,8 +252,8 @@
                                             </p>
                                         </div>
                                         <div class="sqr_quizJudgeCell">
-                                            <svg class="sqr_correctIcon com_hiddenFlg" width="24" height="24" viewBox="0 0 24 24"
-                                                fill="none" tabindex="0">
+                                            <svg class="sqr_correctIcon com_hiddenFlg" width="24" height="24"
+                                                viewBox="0 0 24 24" fill="none" tabindex="0">
                                                 <circle cx="12" cy="12" r="9" stroke="#FF3300" stroke-width="2" />
                                             </svg>
                                             <svg class="sqr_incorrectIcon com_hiddenFlg" width="24" height="24"
@@ -271,8 +275,8 @@
                                                 viewBox="0 0 24 24" fill="none" tabindex="0">
                                                 <circle cx="12" cy="12" r="9" stroke="#FF3300" stroke-width="2" />
                                             </svg>
-                                            <svg class="sqr_incorrectIcon com_hiddenFlg" width="24" height="24" viewBox="0 0 24 24"
-                                                fill="none" tabindex="0">
+                                            <svg class="sqr_incorrectIcon com_hiddenFlg" width="24" height="24"
+                                                viewBox="0 0 24 24" fill="none" tabindex="0">
                                                 <line x1="2" y1="2.00008" x2="22" y2="22.0001" stroke="#FF3300"
                                                     stroke-width="2" />
                                                 <line x1="22" y1="2" x2="2" y2="22" stroke="#FF3300" stroke-width="2" />
@@ -292,8 +296,8 @@
                                                 viewBox="0 0 24 24" fill="none" tabindex="0">
                                                 <circle cx="12" cy="12" r="9" stroke="#FF3300" stroke-width="2" />
                                             </svg>
-                                            <svg class="sqr_incorrectIcon com_hiddenFlg" width="24" height="24" viewBox="0 0 24 24"
-                                                fill="none" tabindex="0">
+                                            <svg class="sqr_incorrectIcon com_hiddenFlg" width="24" height="24"
+                                                viewBox="0 0 24 24" fill="none" tabindex="0">
                                                 <line x1="2" y1="2.00008" x2="22" y2="22.0001" stroke="#FF3300"
                                                     stroke-width="2" />
                                                 <line x1="22" y1="2" x2="2" y2="22" stroke="#FF3300" stroke-width="2" />
@@ -307,8 +311,8 @@
                                             </p>
                                         </div>
                                         <div class="sqr_quizJudgeCell">
-                                            <svg class="sqr_correctIcon com_hiddenFlg" width="24" height="24" viewBox="0 0 24 24"
-                                                fill="none" tabindex="0">
+                                            <svg class="sqr_correctIcon com_hiddenFlg" width="24" height="24"
+                                                viewBox="0 0 24 24" fill="none" tabindex="0">
                                                 <circle cx="12" cy="12" r="9" stroke="#FF3300" stroke-width="2" />
                                             </svg>
                                             <svg class="sqr_incorrectIcon com_hiddenFlg" width="24" height="24"
@@ -332,8 +336,8 @@
                                                 viewBox="0 0 24 24" fill="none" tabindex="0">
                                                 <circle cx="12" cy="12" r="9" stroke="#FF3300" stroke-width="2" />
                                             </svg>
-                                            <svg class="sqr_incorrectIcon com_hiddenFlg" width="24" height="24" viewBox="0 0 24 24"
-                                                fill="none" tabindex="0">
+                                            <svg class="sqr_incorrectIcon com_hiddenFlg" width="24" height="24"
+                                                viewBox="0 0 24 24" fill="none" tabindex="0">
                                                 <line x1="2" y1="2.00008" x2="22" y2="22.0001" stroke="#FF3300"
                                                     stroke-width="2" />
                                                 <line x1="22" y1="2" x2="2" y2="22" stroke="#FF3300" stroke-width="2" />
@@ -351,8 +355,8 @@
                                                 viewBox="0 0 24 24" fill="none" tabindex="0">
                                                 <circle cx="12" cy="12" r="9" stroke="#FF3300" stroke-width="2" />
                                             </svg>
-                                            <svg class="sqr_incorrectIcon com_hiddenFlg" width="24" height="24" viewBox="0 0 24 24"
-                                                fill="none" tabindex="0">
+                                            <svg class="sqr_incorrectIcon com_hiddenFlg" width="24" height="24"
+                                                viewBox="0 0 24 24" fill="none" tabindex="0">
                                                 <line x1="2" y1="2.00008" x2="22" y2="22.0001" stroke="#FF3300"
                                                     stroke-width="2" />
                                                 <line x1="22" y1="2" x2="2" y2="22" stroke="#FF3300" stroke-width="2" />
@@ -368,8 +372,8 @@
                                             </p>
                                         </div>
                                         <div class="sqr_quizJudgeCell">
-                                            <svg class="sqr_correctIcon com_hiddenFlg" width="24" height="24" viewBox="0 0 24 24"
-                                                fill="none" tabindex="0">
+                                            <svg class="sqr_correctIcon com_hiddenFlg" width="24" height="24"
+                                                viewBox="0 0 24 24" fill="none" tabindex="0">
                                                 <circle cx="12" cy="12" r="9" stroke="#FF3300" stroke-width="2" />
                                             </svg>
                                             <svg class="sqr_incorrectIcon com_hiddenFlg" width="24" height="24"
@@ -391,8 +395,8 @@
                                                 viewBox="0 0 24 24" fill="none" tabindex="0">
                                                 <circle cx="12" cy="12" r="9" stroke="#FF3300" stroke-width="2" />
                                             </svg>
-                                            <svg class="sqr_incorrectIcon com_hiddenFlg" width="24" height="24" viewBox="0 0 24 24"
-                                                fill="none" tabindex="0">
+                                            <svg class="sqr_incorrectIcon com_hiddenFlg" width="24" height="24"
+                                                viewBox="0 0 24 24" fill="none" tabindex="0">
                                                 <line x1="2" y1="2.00008" x2="22" y2="22.0001" stroke="#FF3300"
                                                     stroke-width="2" />
                                                 <line x1="22" y1="2" x2="2" y2="22" stroke="#FF3300" stroke-width="2" />

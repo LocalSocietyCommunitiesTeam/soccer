@@ -314,18 +314,12 @@ window.addEventListener('DOMContentLoaded', function () {
 
     // クイズ開始ボタンを押下
     startBtn.addEventListener('click', function () {
-        const loginSec = document.getElementsByClassName('sql_loginSec')[0];
-        const quizSec = document.getElementsByClassName('sqq_quizSec')[0];
-        const userName = document.getElementById('sql_userName');
-        const loginErrorArea = document.getElementsByClassName('sql_loginErrorArea')[0];
+        const loginSec = document.getElementsByClassName('sql_loginSec')[0]; // ログイン画面
+        const quizSec = document.getElementsByClassName('sqq_quizSec')[0]; // クイズ画面
 
         if (isFilled(userName)) {
             // ログインセクションを非表示
             loginSec.classList.add('com_hiddenFlg');
-            // ログインエラーエリアを非表示
-            loginErrorArea.classList.add('sql_loginErrorHidden');
-            // ユーザー名テキストフィールドを正常状態に戻す
-            userName.parentElement.classList.remove('com_textField_error');
 
             // ユーザーデータを登録
             userData.userName = userName.value; // ユーザー名
@@ -336,11 +330,14 @@ window.addEventListener('DOMContentLoaded', function () {
 
             // クイズセクションを表示
             quizSec.classList.remove('com_hiddenFlg');
+
+            // ログインエラーを非表示
+            hideLoginError();
         } else {
             userName.value = '';
-            userName.parentElement.classList.add('com_textField_error');
-            // ログインエラーエリアを表示
-            loginErrorArea.classList.remove('com_hiddenFlg');
+            userName.parentElement.classList.add('c_textField_error');
+            // ログインエラーを表示
+            showLoginError('値を入力してください');
         }
     });
 
@@ -395,7 +392,7 @@ window.addEventListener('DOMContentLoaded', function () {
                         incorrectImg.classList.add('com_hiddenFlg');
                     }
 
-                    
+
                     if (currentQuizNum == 10) {
                         // 最終問題の場合
                         // ローダーを表示
@@ -455,6 +452,36 @@ function setFirstQuiz() {
     for (let i = 0; i < quizData[0].option.length; i++) {
         optionText[i].innerText = quizData[0].option[i];
     }
+}
+
+// ログインエラーを表示する関数
+function showLoginError(errMsg) {
+    // 要素を取得
+    const userName = document.getElementById('sql_userName'); // ユーザー名入力欄
+    const loginErrMsg = document.getElementById('sql_loginErrMsg'); // ログインエラーメッセージ
+    const loginErrorArea = document.getElementsByClassName('sql_loginErrorArea')[0]; // ログインエラーエリア
+
+    // ユーザー名入力欄をエラー状態にする
+    userName.parentElement.classList.add('c_textField_error');
+    // ログインエラーメッセージを表示
+    loginErrMsg.innerText = errMsg;
+    // ログインエラーエリアを表示
+    loginErrorArea.classList.remove('sql_loginErrorHidden');
+}
+
+// ログインエラーを非表示にする関数
+function hideLoginError() {
+    // 要素を取得
+    const userName = document.getElementById('sql_userName'); // ユーザー名入力欄
+    const loginErrMsg = document.getElementById('sql_loginErrMsg'); // ログインエラーメッセージ
+    const loginErrorArea = document.getElementsByClassName('sql_loginErrorArea')[0]; // ログインエラーエリア
+
+    // ユーザー名入力欄のエラー状態を解除
+    userName.parentElement.classList.remove('c_textField_error');
+    // ログインエラーメッセージを表示
+    loginErrMsg.innerText = '';
+    // ログインエラーエリアを表示
+    loginErrorArea.classList.add('sql_loginErrorHidden');
 }
 
 // 選択肢を非活性化する関数
@@ -608,6 +635,12 @@ function resetResult() {
             dialogOptionText[i].parentElement.classList.remove('sqr_correctOption');
         }
 
+        // 選択した選択肢の強調をリセット
+        if (dialogOptionText[i].parentElement.classList.contains('sqr_choice')) {
+            dialogOptionText[i].parentElement.classList.remove('sqr_choice');
+        }
+
+        // タグテキストを削除
         tagText[i].innerText = '';
     }
 }
@@ -637,14 +670,20 @@ function setResult(e) {
         if (i == quizData[quizNum - 1].answer - 1) {
             // 正解選択肢を強調
             dialogOptionText[i].parentElement.classList.add('sqr_correctOption');
+        } else {
+            if (i == userData.choice[quizNum - 1] - 1) {
+                // 選択した選択肢を強調
+                dialogOptionText[i].parentElement.classList.add('sqr_choice');
+            }
         }
     }
 
     // タグテキストを表示
     if (userData.choice[quizNum - 1] == quizData[quizNum - 1].answer) {
         // 正解の場合
-        tagText[quizData[quizNum - 1].answer - 1].innerText = '正解　あなたの解答';
+        tagText[quizData[quizNum - 1].answer - 1].innerText = '正解・あなたの解答';
     } else {
+        // 不正解の場合
         tagText[quizData[quizNum - 1].answer - 1].innerText = '正解';
         tagText[userData.choice[quizNum - 1] - 1].innerText = 'あなたの解答';
     }
