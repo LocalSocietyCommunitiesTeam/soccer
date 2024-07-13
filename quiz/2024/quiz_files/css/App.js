@@ -408,6 +408,13 @@ window.addEventListener('DOMContentLoaded', function () {
                 }, 1500);
             }
         });
+
+        // 選択肢Enter時の処理
+        option[i].nextElementSibling.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') {
+                this.click();
+            }
+        });
     }
 });
 
