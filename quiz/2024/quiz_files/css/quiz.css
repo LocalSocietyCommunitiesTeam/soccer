@@ -14,6 +14,15 @@
     padding: 20px 12px;
 }
 
+@media (min-width: 760px) {
+    .sqq_problemArea {
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 24px 32px;
+    }
+}
+
 .sqq_numberArea {
     display: flex;
     justify-content: center;
