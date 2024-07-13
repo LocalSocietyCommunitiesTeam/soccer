@@ -1,11 +1,11 @@
 /** 結果画面CSS **/
 .sqr_resultSec {
-    padding: 24px 20px;
+    padding: 24px 20px 0;
 }
 
 @media (min-width: 760px) {
     .sqr_resultSec {
-        padding: 24px 0;
+        padding: 24px 0 0;
         width: 100%;
         max-width: 800px;
         margin: 0 auto;
