@@ -19,36 +19,27 @@ if (document.getElementsByClassName('c_loader')) {
 /* ドラッグ */
 window.addEventListener('load', function () {
     if (this.document.getElementsByClassName('c_drag')) {
+        const html = document.documentElement;
+        const body = document.body;
         const drag = document.getElementsByClassName('c_drag');
+
+        html.classList.add('c_htmlScroll');
+        body.classList.add('c_bodyScroll');
 
         for (let i = 0; i < drag.length; i++) {
             drag[i].style.width = drag[i].firstElementChild.offsetWidth + 'px';
             drag[i].style.height = drag[i].firstElementChild.offsetHeight + 'px';
 
-            drag[i].firstElementChild.addEventListener('pointerdown', pointerDown);
             drag[i].firstElementChild.addEventListener('pointermove', pointerMove);
-            drag[i].firstElementChild.addEventListener('pointerup', pointerUp);
 
-            function pointerDown () {
-                const html = document.documentElement;
-                html.classList.add('c_htmlScroll');
-            }
-
-            function pointerMove (e) {
+            function pointerMove(e) {
                 if (e.buttons) {
-                    this.classList.add('c_drag_scaleUp');
                     this.style.left = this.offsetLeft + e.movementX + 'px';
                     this.style.top = this.offsetTop + e.movementY + 'px';
                     this.classList.add('c_drag_absolute');
                     this.draggable = false;
                     this.setPointerCapture(e.pointerId);
                 }
-            }
-
-            function pointerUp () {
-                const html = document.documentElement;
-                html.classList.remove('c_htmlScroll');
-                this.classList.remove('c_drag_scaleUp');
             }
         }
     }

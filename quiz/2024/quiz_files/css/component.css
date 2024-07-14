@@ -4,6 +4,10 @@
     overflow: hidden;
 }
 
+.c_bodyScroll {
+    -webkit-overflow-scrolling: touch;
+}
+
 /* ローダー */
 .c_loader {
     position: fixed;
@@ -108,15 +112,6 @@
     .c_drag>*:active {
         cursor: grabbing;
     }
-}
-
-.c_drag>* {
-    transition: transform 0.2s ease-out;
-}
-
-.c_drag_scaleUp {
-    transform: scale(1.5);
-    transition: transform 0.3s ease-in;
 }
 
 .c_drag_absolute {
