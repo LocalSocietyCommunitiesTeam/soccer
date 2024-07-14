@@ -90,6 +90,35 @@
     }
 }
 
+/* ドラッグ */
+.c_drag {
+    position: relative;
+}
+
+@media (min-width: 760px) {
+    .c_drag>*:hover {
+        cursor: grab;
+    }
+
+    .c_drag>*:active {
+        cursor: grabbing;
+    }
+}
+
+.c_drag>* {
+    transition: transform 0.2s ease-out;
+}
+
+.c_drag_scaleUp {
+    transform: scale(1.5);
+    transition: transform 0.3s ease-in;
+}
+
+.c_drag_absolute {
+    position: absolute;
+    z-index: 10;
+}
+
 /* ノーティフィケーション */
 .c_notification {
     padding: 8px;

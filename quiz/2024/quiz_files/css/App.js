@@ -277,7 +277,7 @@ function setUuid() {
 // DOMツリー読込時の処理
 window.addEventListener('DOMContentLoaded', function () {
     // 要素を取得
-    const homeSec = document.getElementsByClassName('sqh_homeSec')[0]; // ホームセクション
+    const homeSec = document.getElementsByClassName('sqh_homeSec')[0]; // ホーム画面
     const goToLoginBtn = document.getElementById('sqh_goToLoginBtn'); // ログイン画面へボタン
 
     const userName = document.getElementById('sql_userName'); // ユーザー名入力欄

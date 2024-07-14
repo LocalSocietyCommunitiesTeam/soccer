@@ -16,6 +16,36 @@ if (document.getElementsByClassName('c_loader')) {
     }
 }
 
+/* ドラッグ */
+window.addEventListener('load', function () {
+    if (this.document.getElementsByClassName('c_drag')) {
+        const drag = document.getElementsByClassName('c_drag');
+
+        for (let i = 0; i < drag.length; i++) {
+            drag[i].style.width = drag[i].firstElementChild.offsetWidth + 'px';
+            drag[i].style.height = drag[i].firstElementChild.offsetHeight + 'px';
+
+            drag[i].firstElementChild.addEventListener('pointermove', pointerMove);
+            drag[i].firstElementChild.addEventListener('pointerup', pointerUp);
+
+            function pointerMove (e) {
+                if (e.buttons) {
+                    this.classList.add('c_drag_scaleUp');
+                    this.style.left = this.offsetLeft + e.movementX + 'px';
+                    this.style.top = this.offsetTop + e.movementY + 'px';
+                    this.classList.add('c_drag_absolute');
+                    this.draggable = false;
+                    this.setPointerCapture(e.pointerId);
+                }
+            }
+
+            function pointerUp () {
+                this.classList.remove('c_drag_scaleUp');
+            }
+        }
+    }
+});
+
 /* ダイアログ */
 if (!document.getElementsByClassName('c_dialog').length) {
     //該当の要素がない場合は処理を行なわない
