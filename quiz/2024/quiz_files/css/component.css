@@ -1,4 +1,9 @@
 /** コンポーネントCSS **/
+/* 共通 */
+.c_htmlScroll {
+    overflow: hidden;
+}
+
 /* ローダー */
 .c_loader {
     position: fixed;

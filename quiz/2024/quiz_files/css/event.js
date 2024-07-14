@@ -25,8 +25,14 @@ window.addEventListener('load', function () {
             drag[i].style.width = drag[i].firstElementChild.offsetWidth + 'px';
             drag[i].style.height = drag[i].firstElementChild.offsetHeight + 'px';
 
+            drag[i].firstElementChild.addEventListener('pointerdown', pointerDown);
             drag[i].firstElementChild.addEventListener('pointermove', pointerMove);
             drag[i].firstElementChild.addEventListener('pointerup', pointerUp);
+
+            function pointerDown () {
+                const html = document.documentElement;
+                html.classList.add('c_htmlScroll');
+            }
 
             function pointerMove (e) {
                 if (e.buttons) {
@@ -40,6 +46,8 @@ window.addEventListener('load', function () {
             }
 
             function pointerUp () {
+                const html = document.documentElement;
+                html.classList.remove('c_htmlScroll');
                 this.classList.remove('c_drag_scaleUp');
             }
         }
