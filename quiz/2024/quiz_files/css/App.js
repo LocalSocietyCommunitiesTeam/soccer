@@ -258,7 +258,7 @@ function setUuid() {
     try {
         uuid = JSON.parse(localStorage.getItem('userData')).uuid;
     } catch {
-        showErrorSec(errMsg[1]);
+        // showErrorSec(errMsg[1]);
         // ローカルストレージから UUID を取得できない場合は、新しい UUID を生成
         uuid = crypto.randomUUID();
     } finally {
