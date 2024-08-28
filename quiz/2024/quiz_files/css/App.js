@@ -9,9 +9,7 @@ fetchRandomQuizzes(LIMIT_NUM_OF_QUIZ);
 
 //     try {
 //         // 10秒のタイムアウトを設定してAPIにリクエストを送信
-//         const response = await fetch(newURL, {
-//             timeout: timeout
-//         });
+//         const response = await fetch(newURL);
 
 //         // レスポンスからJSONデータをパース
 //         const quizzes = await response.json();
@@ -41,9 +39,7 @@ fetchRandomQuizzes(LIMIT_NUM_OF_QUIZ);
 
 //     try {
 //         // 10秒のタイムアウトを設定してAPIにリクエストを送信
-//         const response = await fetch(newURL, {
-//             timeout: timeout
-//         });
+//         const response = await fetch(newURL);
 
 //         // レスポンスからJSONデータをパース
 //         const quizzes = await response.json();
@@ -73,9 +69,7 @@ async function fetchRandomQuizzes(num) {
 
     try {
         // 10秒のタイムアウトを設定してAPIにリクエストを送信
-        const response = await fetch(newURL, {
-            timeout: timeout
-        });
+        const response = await fetch(newURL);
 
         // レスポンスからJSONデータをパース
         const result = await response.json();
@@ -105,9 +99,7 @@ async function fetchRandomQuizzes(num) {
 
 //     try {
 //         // 10秒のタイムアウトを設定してAPIにリクエストを送信
-//         const response = await fetch(newURL, {
-//             timeout: timeout
-//         });
+//         const response = await fetch(newURL);
 
 //         // レスポンスからJSONデータをパース
 //         const logs = await response.json();
@@ -135,9 +127,7 @@ async function fetchRandomQuizzes(num) {
 
 //     try {
 //         // 10秒のタイムアウトを設定してAPIにリクエストを送信
-//         const response = await fetch(newURL, {
-//             timeout: timeout
-//         });
+//         const response = await fetch(newURL);
 
 //         // レスポンスからJSONデータをパース
 //         const log = await response.json();
@@ -170,8 +160,7 @@ async function logAnswer(data) {
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded"
             },
-            body: JSON.stringify(data),
-            timeout: timeout
+            body: JSON.stringify(data)
         });
 
         // レスポンスからJSONデータをパース
@@ -400,7 +389,6 @@ window.addEventListener('DOMContentLoaded', function () {
                     if (!incorrectImg.classList.contains('com_hiddenFlg')) {
                         incorrectImg.classList.add('com_hiddenFlg');
                     }
-
 
                     if (currentQuizNum == 10) {
                         // 最終問題の場合
